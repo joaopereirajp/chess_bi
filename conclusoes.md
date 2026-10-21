@@ -2,7 +2,7 @@
 ## Relatório Analítico: Desempenho e Estratégia em Jogos de Xadrez Online
 
 **Tema:** Desempenho e Estratégia em Jogos de Xadrez Online  
-**Base de Dados:** 20.058 partidas de xadrez reais extraídas do Lichess (`games.csv` / `games_tratada.csv`)  
+**Base de Dados:** 20.058 partidas de xadrez reais extraídas do Lichess (`chess_games.csv`)  
 **Objetivo Geral:** Criação de um painel interativo (BI) para analisar o desempenho e o comportamento dos jogadores em Jogos de Xadrez Online levando em conta o nível de habilidade.  
 
 ---
@@ -112,6 +112,6 @@ A investigação sobre como as partidas são decididas revelou a mais profunda t
 ## 4. Guia de Arquivos Entregues
 
 1. **Dashboard Funcional:** Aplicação Next.js interativa executável via `npm run dev` ou estática via pasta `out/index.html`.
-2. **Base de Dados Utilizada:** Arquivo original `games.csv` e arquivo enriquecido com novas variáveis `games_tratada.csv`.
+2. **Base de Dados Utilizada:** Arquivo de dados unificado e enriquecido: `chess_games.csv`.
 3. **Protótipo do Dashboard:** Arquivo de imagem em alta definição `prototipo_dashboard.jpg` presente na raiz e na pasta `public/`.
 4. **Documento com 3 Conclusões:** O presente documento `conclusoes.md` e a aba integrada na aplicação web.

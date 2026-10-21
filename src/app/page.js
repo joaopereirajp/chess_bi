@@ -87,13 +87,13 @@ export default function Home() {
           {/* Deliverables pill links */}
           <div className="flex flex-wrap items-center gap-2">
             <a
-              href="/games_tratada.csv"
-              download
+              href="/chess_games.csv"
+              download="chess_games.csv"
               className="flex items-center space-x-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-gray-800 text-gray-200 hover:text-white hover:bg-gray-700 border border-gray-700/60 transition shadow-sm cursor-pointer"
-              title="Baixar Base de Dados Tratada (Entrega 2)"
+              title="Baixar Base de Dados de Xadrez (Entrega 2)"
             >
               <Download className="w-3.5 h-3.5 text-amber-400" />
-              <span>CSV Tratado</span>
+              <span>Baixar Base (CSV)</span>
             </a>
             <button
               onClick={() => setActiveTab('conclusoes')}

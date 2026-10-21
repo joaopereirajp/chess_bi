@@ -11,7 +11,7 @@
 | Item | Entrega Obrigatória | Arquivo / Link no Projeto |
 | :---: | :--- | :--- |
 | 1️⃣ | **Dashboard Funcional** | Aplicação web interativa em Next.js (`npm run dev` em `http://localhost:3000`) ou exportação estática na pasta `out/index.html` |
-| 2️⃣ | **Base de Dados Utilizada** | Base original: [`games.csv`](file:///Users/joaopereira/StudioProjects/chess_bi/games.csv)<br>Base tratada com novas variáveis: [`games_tratada.csv`](file:///Users/joaopereira/StudioProjects/chess_bi/games_tratada.csv) |
+| 2️⃣ | **Base de Dados Utilizada** | Base unificada e enriquecida com novas variáveis: [`chess_games.csv`](file:///Users/joaopereira/StudioProjects/chess_bi/chess_games.csv) |
 | 3️⃣ | **Protótipo do Dashboard** | Arquivo de imagem em alta fidelidade: [`prototipo_dashboard.jpg`](file:///Users/joaopereira/StudioProjects/chess_bi/prototipo_dashboard.jpg) |
 | 4️⃣ | **Documento com 3 Conclusões** | Relatório analítico completo: [`conclusoes.md`](file:///Users/joaopereira/StudioProjects/chess_bi/conclusoes.md) (também disponível na aba do próprio Dashboard) |
 

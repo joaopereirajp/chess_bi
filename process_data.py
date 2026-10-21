@@ -3,8 +3,8 @@ import json
 import os
 from collections import defaultdict, Counter
 
-CSV_INPUT = 'games.csv'
-CSV_OUTPUT = 'games_tratada.csv'
+CSV_INPUT = 'chess_games.csv'
+CSV_OUTPUT = 'chess_games.csv'
 JSON_OUTPUT = 'dashboard_data.json'
 
 def parse_time_category(increment_code):
@@ -80,9 +80,11 @@ def main():
     
     with open(CSV_INPUT, mode='r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
-        fieldnames = reader.fieldnames + [
-            'avg_rating', 'rating_tier', 'time_category', 'opening_family'
-        ]
+        new_cols = ['avg_rating', 'rating_tier', 'time_category', 'opening_family']
+        fieldnames = list(reader.fieldnames)
+        for col in new_cols:
+            if col not in fieldnames:
+                fieldnames.append(col)
         
         for row in reader:
             w_rating = float(row['white_rating'])
