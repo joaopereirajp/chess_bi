@@ -29,7 +29,7 @@ export default function Navbar({ onSelectTab, activeTab }) {
           <div className="flex items-center space-x-2">
             <button
               onClick={() => onSelectTab('geral')}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer ${
                 activeTab === 'geral'
                   ? 'bg-amber-500 text-gray-950 font-semibold shadow-md shadow-amber-500/20'
                   : 'text-gray-300 hover:text-white hover:bg-gray-800'
@@ -39,7 +39,7 @@ export default function Navbar({ onSelectTab, activeTab }) {
             </button>
             <button
               onClick={() => onSelectTab('conclusoes')}
-              className={`flex items-center space-x-1.5 px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer ${
                 activeTab === 'conclusoes'
                   ? 'bg-amber-500 text-gray-950 font-semibold shadow-md shadow-amber-500/20'
                   : 'text-gray-300 hover:text-white hover:bg-gray-800'
@@ -50,7 +50,7 @@ export default function Navbar({ onSelectTab, activeTab }) {
             </button>
             <button
               onClick={() => onSelectTab('aberturas')}
-              className={`hidden md:block px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
+              className={`hidden md:block px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer ${
                 activeTab === 'aberturas'
                   ? 'bg-amber-500 text-gray-950 font-semibold shadow-md shadow-amber-500/20'
                   : 'text-gray-300 hover:text-white hover:bg-gray-800'

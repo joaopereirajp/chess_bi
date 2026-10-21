@@ -89,7 +89,7 @@ export default function Home() {
             <a
               href="/games_tratada.csv"
               download
-              className="flex items-center space-x-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-gray-800 text-gray-200 hover:text-white hover:bg-gray-700 border border-gray-700/60 transition shadow-sm"
+              className="flex items-center space-x-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-gray-800 text-gray-200 hover:text-white hover:bg-gray-700 border border-gray-700/60 transition shadow-sm cursor-pointer"
               title="Baixar Base de Dados Tratada (Entrega 2)"
             >
               <Download className="w-3.5 h-3.5 text-amber-400" />
@@ -97,7 +97,7 @@ export default function Home() {
             </a>
             <button
               onClick={() => setActiveTab('conclusoes')}
-              className="flex items-center space-x-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 border border-amber-500/30 transition shadow-sm"
+              className="flex items-center space-x-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 border border-amber-500/30 transition shadow-sm cursor-pointer"
             >
               <FileText className="w-3.5 h-3.5" />
               <span>Conclusões</span>

@@ -68,7 +68,7 @@ export default function OpeningsTable({ openings }) {
               <th className="py-3 px-4">
                 <button
                   onClick={() => handleSort('name')}
-                  className="flex items-center space-x-1 hover:text-white"
+                  className="flex items-center space-x-1 hover:text-white cursor-pointer"
                 >
                   <span>Abertura / Família</span>
                   <ArrowUpDown className="w-3 h-3 opacity-60" />
@@ -78,7 +78,7 @@ export default function OpeningsTable({ openings }) {
               <th className="py-3 px-3 text-right">
                 <button
                   onClick={() => handleSort('total_games')}
-                  className="flex items-center space-x-1 ml-auto hover:text-white"
+                  className="flex items-center space-x-1 ml-auto hover:text-white cursor-pointer"
                 >
                   <span>Partidas</span>
                   <ArrowUpDown className="w-3 h-3 opacity-60" />
@@ -87,7 +87,7 @@ export default function OpeningsTable({ openings }) {
               <th className="py-3 px-3 text-right">
                 <button
                   onClick={() => handleSort('white_win_pct')}
-                  className="flex items-center space-x-1 ml-auto text-amber-400 hover:text-amber-300"
+                  className="flex items-center space-x-1 ml-auto text-amber-400 hover:text-amber-300 cursor-pointer"
                 >
                   <span>% Vit. Brancas</span>
                   <ArrowUpDown className="w-3 h-3 opacity-60" />
@@ -96,7 +96,7 @@ export default function OpeningsTable({ openings }) {
               <th className="py-3 px-3 text-right">
                 <button
                   onClick={() => handleSort('black_win_pct')}
-                  className="flex items-center space-x-1 ml-auto hover:text-white"
+                  className="flex items-center space-x-1 ml-auto hover:text-white cursor-pointer"
                 >
                   <span>% Vit. Pretas</span>
                   <ArrowUpDown className="w-3 h-3 opacity-60" />
@@ -105,7 +105,7 @@ export default function OpeningsTable({ openings }) {
               <th className="py-3 px-3 text-right">
                 <button
                   onClick={() => handleSort('draw_pct')}
-                  className="flex items-center space-x-1 ml-auto hover:text-white"
+                  className="flex items-center space-x-1 ml-auto hover:text-white cursor-pointer"
                 >
                   <span>% Empates</span>
                   <ArrowUpDown className="w-3 h-3 opacity-60" />
@@ -114,7 +114,7 @@ export default function OpeningsTable({ openings }) {
               <th className="py-3 px-4 text-right">
                 <button
                   onClick={() => handleSort('avg_turns')}
-                  className="flex items-center space-x-1 ml-auto hover:text-white"
+                  className="flex items-center space-x-1 ml-auto hover:text-white cursor-pointer"
                 >
                   <span>Média Turnos</span>
                   <ArrowUpDown className="w-3 h-3 opacity-60" />

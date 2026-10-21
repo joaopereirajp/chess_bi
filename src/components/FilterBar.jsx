@@ -71,7 +71,7 @@ export default function FilterBar({ selectedTier, onSelectTier, countsByTier }) 
           {selectedTier !== 'Todos' ? (
             <button
               onClick={() => onSelectTier('Todos')}
-              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-amber-400 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 transition-all shadow-sm"
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-amber-400 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 transition-all shadow-sm cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Limpar Filtro</span>
@@ -93,7 +93,7 @@ export default function FilterBar({ selectedTier, onSelectTier, countsByTier }) 
             <button
               key={tier.id}
               onClick={() => onSelectTier(tier.id)}
-              className={`group relative text-left p-3.5 rounded-xl border transition-all duration-200 flex flex-col justify-between ${
+              className={`group relative text-left p-3.5 rounded-xl border transition-all duration-200 flex flex-col justify-between cursor-pointer ${
                 isSelected
                   ? 'bg-amber-500/15 border-amber-500 text-white shadow-lg shadow-amber-500/10 ring-1 ring-amber-500/50'
                   : 'bg-gray-900/60 hover:bg-gray-800/80 border-gray-800/90 hover:border-gray-700 text-gray-300'
