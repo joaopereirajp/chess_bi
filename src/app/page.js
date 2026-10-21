@@ -122,7 +122,10 @@ export default function Home() {
             {/* Main Charts Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Gráfico 1: Aberturas mais bem-sucedidas */}
-              <OpeningsChart openingsData={currentOpenings} />
+              <OpeningsChart
+                openingsData={currentOpenings}
+                mostPlayedData={dashboardData.most_played_openings}
+              />
 
               {/* Gráfico 2: Duração por rating */}
               <DurationChart turnsByTier={dashboardData.turns_by_tier} />
