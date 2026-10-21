@@ -1,9 +1,11 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
+import { Clock, TrendingUp, Sparkles, Award } from 'lucide-react';
 
 export default function DurationChart({ turnsByTier }) {
+  const [metricUnit, setMetricUnit] = useState('turns'); // 'turns' | 'minutes'
   const canvasRef = useRef(null);
   const chartInstance = useRef(null);
 
@@ -14,10 +16,19 @@ export default function DurationChart({ turnsByTier }) {
       chartInstance.current.destroy();
     }
 
-    const labels = turnsByTier.map((t) => t.tier.split(' ')[0]); // 'Iniciante', 'Intermediário', etc.
+    const labels = turnsByTier.map((t) => t.tier.split(' ')[0]);
     const fullLabels = turnsByTier.map((t) => t.tier);
-    const avgTurns = turnsByTier.map((t) => t.avg_turns);
-    const medianTurns = turnsByTier.map((t) => t.median_turns);
+
+    // Valores para 'turns' ou 'minutes'
+    const dataValues = turnsByTier.map((t) =>
+      metricUnit === 'turns' ? t.avg_turns : Math.round(t.avg_turns * 0.45)
+    );
+
+    const medianValues = turnsByTier.map((t) =>
+      metricUnit === 'turns' ? t.median_turns : Math.round(t.median_turns * 0.45)
+    );
+
+    const unitSuffix = metricUnit === 'turns' ? ' turnos' : ' min';
 
     const ctx = canvasRef.current.getContext('2d');
 
@@ -27,13 +38,13 @@ export default function DurationChart({ turnsByTier }) {
         labels: labels,
         datasets: [
           {
-            label: 'Média de Turnos',
-            data: avgTurns,
+            label: metricUnit === 'turns' ? 'Média de Turnos' : 'Tempo Estimado (min)',
+            data: dataValues,
             backgroundColor: [
-              'rgba(148, 163, 184, 0.7)',  // Iniciante - cinza azulado
-              'rgba(59, 130, 246, 0.75)',  // Intermediário - azul
-              'rgba(16, 185, 129, 0.8)',   // Avançado - verde esmeralda
-              'rgba(245, 158, 11, 0.9)',   // Mestre - dourado âmbar
+              'rgba(148, 163, 184, 0.75)', // Iniciante - Slate
+              'rgba(59, 130, 246, 0.8)',   // Intermediário - Azul
+              'rgba(16, 185, 129, 0.85)',  // Avançado - Esmeralda
+              'rgba(245, 158, 11, 0.9)',   // Mestre - Âmbar Dourado
             ],
             borderColor: [
               'rgba(148, 163, 184, 1)',
@@ -46,17 +57,18 @@ export default function DurationChart({ turnsByTier }) {
             order: 2,
           },
           {
-            label: 'Linha de Tendência',
-            data: avgTurns,
+            label: 'Tendência Linear',
+            data: dataValues,
             type: 'line',
-            borderColor: 'rgba(251, 191, 36, 0.9)',
-            borderWidth: 2,
+            borderColor: 'rgba(251, 191, 36, 0.95)',
+            borderWidth: 2.5,
             pointBackgroundColor: '#fbbf24',
-            pointBorderColor: '#0f172a',
+            pointBorderColor: '#0b0f17',
             pointBorderWidth: 2,
             pointRadius: 5,
+            pointHoverRadius: 7,
             fill: false,
-            tension: 0.3,
+            tension: 0.35,
             order: 1,
           },
         ],
@@ -68,10 +80,12 @@ export default function DurationChart({ turnsByTier }) {
           legend: {
             display: true,
             position: 'top',
+            align: 'end',
             labels: {
               color: '#94a3b8',
               font: { size: 11 },
               boxWidth: 12,
+              usePointStyle: true,
             },
           },
           tooltip: {
@@ -86,13 +100,14 @@ export default function DurationChart({ turnsByTier }) {
               label: (item) => {
                 const d = turnsByTier[item.dataIndex];
                 if (item.dataset.type === 'line') {
-                  return `Tendência: ${d.avg_turns} turnos`;
+                  return `Tendência: ${item.raw}${unitSuffix}`;
                 }
+                const estMin = Math.round(d.avg_turns * 0.45);
                 return [
-                  `Média: ${d.avg_turns} turnos`,
+                  `Média: ${d.avg_turns} turnos (~${estMin} min)`,
                   `Mediana: ${d.median_turns} turnos`,
                   `Volume: ${d.count.toLocaleString()} partidas`,
-                  `Variação: ${d.min_turns} a ${d.max_turns} turnos`,
+                  `Variação: de ${d.min_turns} a ${d.max_turns} turnos`,
                 ];
               },
             },
@@ -102,19 +117,17 @@ export default function DurationChart({ turnsByTier }) {
           x: {
             ticks: {
               color: '#e2e8f0',
-              font: { size: 11, weight: '500' },
+              font: { size: 11, weight: '600' },
             },
-            grid: {
-              display: false,
-            },
+            grid: { display: false },
           },
           y: {
-            min: 30,
-            max: 85,
+            min: metricUnit === 'turns' ? 30 : 15,
+            max: metricUnit === 'turns' ? 85 : 40,
             ticks: {
-              callback: (val) => `${val} t`,
+              callback: (val) => `${val}${metricUnit === 'turns' ? ' t' : 'm'}`,
               color: '#94a3b8',
-              font: { size: 11 },
+              font: { size: 10 },
             },
             grid: {
               color: 'rgba(255, 255, 255, 0.06)',
@@ -127,25 +140,93 @@ export default function DurationChart({ turnsByTier }) {
     return () => {
       if (chartInstance.current) chartInstance.current.destroy();
     };
-  }, [turnsByTier]);
+  }, [turnsByTier, metricUnit]);
 
   return (
-    <div className="glass-panel rounded-2xl p-5 border border-gray-800 flex flex-col h-[400px]">
-      <div className="flex items-center justify-between mb-4">
+    <div className="glass-panel rounded-2xl p-5 border border-gray-800 flex flex-col h-[460px] shadow-xl">
+      {/* Top Header of Card */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-gray-800/80 mb-3">
         <div>
           <div className="flex items-center space-x-2">
-            <h3 className="text-sm font-bold text-white">Objetivo 2: Duração Média vs. Nível de Habilidade</h3>
+            <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <Clock className="w-3.5 h-3.5" />
+            </div>
+            <h3 className="text-sm font-bold text-white tracking-tight">
+              Objetivo 2: Duração Média vs. Nível de Habilidade
+            </h3>
             <span className="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20 font-semibold">
-              +35% em Mestres
+              +35.2%
             </span>
           </div>
           <p className="text-xs text-gray-400 mt-0.5">
-            Turnos médios crescem de 52.9 (iniciantes) para 71.5 (mestres)
+            Turnos médios e tempo de jogo crescem conforme o rating aumenta
           </p>
         </div>
+
+        {/* Toggle Unit Button */}
+        <div className="flex items-center bg-gray-900/80 rounded-xl p-1 border border-gray-800 self-start sm:self-auto">
+          <button
+            onClick={() => setMetricUnit('turns')}
+            className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+              metricUnit === 'turns'
+                ? 'bg-emerald-500 text-gray-950 shadow-sm font-bold'
+                : 'text-gray-400 hover:text-white'
+            }`}
+          >
+            Turnos
+          </button>
+          <button
+            onClick={() => setMetricUnit('minutes')}
+            className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+              metricUnit === 'minutes'
+                ? 'bg-emerald-500 text-gray-950 shadow-sm font-bold'
+                : 'text-gray-400 hover:text-white'
+            }`}
+          >
+            Minutos (~Tempo)
+          </button>
+        </div>
       </div>
+
+      {/* 4 Quick Stat Comparison Pills */}
+      <div className="grid grid-cols-4 gap-2 mb-2">
+        {turnsByTier.map((t, idx) => {
+          const estMin = Math.round(t.avg_turns * 0.45);
+          const isMaster = idx === 3;
+          return (
+            <div
+              key={idx}
+              className={`p-2 rounded-xl text-center border transition-all ${
+                isMaster
+                  ? 'bg-amber-500/10 border-amber-500/30 text-amber-300'
+                  : 'bg-gray-900/60 border-gray-800 text-gray-300'
+              }`}
+            >
+              <div className="text-[10px] text-gray-400 font-medium truncate">
+                {t.tier.split(' ')[0]}
+              </div>
+              <div className="text-sm font-extrabold text-white mt-0.5">
+                {metricUnit === 'turns' ? `${t.avg_turns}t` : `${estMin}m`}
+              </div>
+              <div className="text-[9px] text-gray-500 mt-0.5">
+                Mediana: {t.median_turns}t
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Canvas Area */}
       <div className="flex-1 min-h-0 relative">
         <canvas ref={canvasRef} />
+      </div>
+
+      {/* Analytical Insight Footer Banner */}
+      <div className="mt-2.5 p-2 rounded-xl bg-gray-900/60 border border-gray-800/80 text-[11px] text-gray-400 flex items-center space-x-2">
+        <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+        <span className="truncate">
+          <strong>Insight:</strong> Iniciantes encerram em ~52 turnos (erros precoces); Mestres sustentam finais técnicos até ~71 turnos (+35%).
+        </span>
       </div>
     </div>
   );
