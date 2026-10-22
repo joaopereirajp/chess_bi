@@ -113,6 +113,17 @@ export default function Home() {
     return dashboardData.top_white_openings;
   }, [selectedTier]);
 
+  const currentMostPlayed = useMemo(() => {
+    if (selectedTier === 'Todos') {
+      return dashboardData.most_played_openings;
+    }
+    const tierMostPlayed = dashboardData.by_tier[selectedTier]?.most_played_openings;
+    if (tierMostPlayed && tierMostPlayed.length > 0) {
+      return tierMostPlayed;
+    }
+    return dashboardData.most_played_openings;
+  }, [selectedTier]);
+
   return (
     <div className="min-h-screen bg-slate-100 dark:bg-[#0b0f17] text-slate-900 dark:text-gray-100 flex flex-col transition-colors duration-200">
       <Navbar
@@ -168,7 +179,7 @@ export default function Home() {
               {/* Gráfico 1: Aberturas mais bem-sucedidas */}
               <OpeningsChart
                 openingsData={currentOpenings}
-                mostPlayedData={dashboardData.most_played_openings}
+                mostPlayedData={currentMostPlayed}
                 theme={theme}
               />
 

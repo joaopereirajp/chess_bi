@@ -6,6 +6,7 @@ from collections import defaultdict, Counter
 CSV_INPUT = 'chess_games.csv'
 CSV_OUTPUT = 'chess_games.csv'
 JSON_OUTPUT = 'dashboard_data.json'
+JSON_SRC_OUTPUT = os.path.join('src', 'data', 'dashboard_data.json')
 
 def parse_time_category(increment_code):
     """
@@ -263,20 +264,29 @@ def main():
             op['turns'] += int(r['turns'])
             op[r['winner']] += 1
             
-        t_top_white = []
+        # Minimo de jogos adaptativo: Mestre tem 717 jogos no total,
+        # portanto um corte fixo de 15 deixava a lista vazia (o maximo de qualquer abertura no tier é 11).
+        min_tier_games = 5 if t == 'Mestre/Especialista (2100+)' else 15
+
+        t_qual_openings = []
         for name, s in t_ops.items():
-            if s['total'] >= 15:
-                t_top_white.append({
+            if s['total'] >= min_tier_games:
+                t_qual_openings.append({
                     'name': name,
                     'eco': s['eco'],
                     'family': s['family'],
                     'total_games': s['total'],
+                    'white_wins': s['white'],
+                    'black_wins': s['black'],
+                    'draws': s['draw'],
                     'white_win_pct': round(s['white'] / s['total'] * 100, 1),
                     'black_win_pct': round(s['black'] / s['total'] * 100, 1),
                     'draw_pct': round(s['draw'] / s['total'] * 100, 1),
                     'avg_turns': round(s['turns'] / s['total'], 1)
                 })
-        t_top_white.sort(key=lambda x: x['white_win_pct'], reverse=True)
+
+        t_top_white = sorted(t_qual_openings, key=lambda x: (x['white_win_pct'], x['total_games']), reverse=True)[:10]
+        t_most_played = sorted(t_qual_openings, key=lambda x: (x['total_games'], x['white_win_pct']), reverse=True)[:10]
         
         by_tier[t] = {
             'count': t_count,
@@ -289,7 +299,8 @@ def main():
             'resign_pct': round(t_status['resign'] / t_count * 100, 1) if t_count else 0,
             'outoftime_pct': round(t_status['outoftime'] / t_count * 100, 1) if t_count else 0,
             'draw_status_pct': round(t_status['draw'] / t_count * 100, 1) if t_count else 0,
-            'top_white_openings': t_top_white[:10]
+            'top_white_openings': t_top_white,
+            'most_played_openings': t_most_played
         }
 
     # Objeto final formatado para o dashboard
@@ -320,6 +331,12 @@ def main():
     with open(JSON_OUTPUT, mode='w', encoding='utf-8') as f:
         json.dump(summary_data, f, ensure_ascii=False, indent=2)
     print(f"Sumário analítico do dashboard gerado em: {JSON_OUTPUT}")
+
+    # Também atualizar src/data/dashboard_data.json se a pasta existir
+    if os.path.exists(os.path.dirname(JSON_SRC_OUTPUT)):
+        with open(JSON_SRC_OUTPUT, mode='w', encoding='utf-8') as f:
+            json.dump(summary_data, f, ensure_ascii=False, indent=2)
+        print(f"Sumário analítico sincronizado em: {JSON_SRC_OUTPUT}")
 
 if __name__ == '__main__':
     main()
