@@ -6,7 +6,7 @@ import {
   ArrowUp,
   ArrowDown,
   ArrowUpDown,
-  Download,
+  FileSpreadsheet,
   ChevronLeft,
   ChevronRight,
   Filter,
@@ -175,7 +175,7 @@ export default function OpeningsTable({ openings }) {
             className="flex items-center justify-center space-x-1.5 px-3 py-2 bg-gray-800 hover:bg-gray-700/80 text-gray-200 hover:text-white border border-gray-700 rounded-xl text-xs font-semibold transition cursor-pointer shrink-0"
             title="Exportar dados filtrados da tabela para arquivo CSV"
           >
-            <Download className="w-3.5 h-3.5 text-amber-400" />
+            <FileSpreadsheet className="w-3.5 h-3.5 text-amber-400" />
             <span>Exportar CSV</span>
           </button>
         </div>
