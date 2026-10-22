@@ -108,16 +108,6 @@ Incorpora nativamente o relatório acadêmico no próprio dashboard, com cards e
 
 ---
 
-### 📱 3. Responsividade Mobile & Tablet
-Menu superior responsivo com drawer suspenso animado, backdrop interativo e fechamento dinâmico via `Esc` ou clique externo:
-
-<div align="center">
-  <img src="docs/images/mobile_dashboard.png" alt="Visualização Mobile Responsiva" width="340px" style="border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
-  <p><em>Figura 4: Adaptação mobile com gaveta de navegação compacta e fluida.</em></p>
-</div>
-
----
-
 ## ⚙️ Arquitetura do Projeto & Pipeline de ETL
 
 O projeto foi construído sobre uma arquitetura moderna e autossuficiente:
