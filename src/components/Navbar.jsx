@@ -9,8 +9,6 @@ import {
   Download,
   Menu,
   X,
-  ExternalLink,
-  Sparkles,
 } from 'lucide-react';
 
 export default function Navbar({ onSelectTab, activeTab }) {
@@ -159,128 +157,99 @@ export default function Navbar({ onSelectTab, activeTab }) {
               </svg>
             </a>
 
-            {/* Mobile / Tablet Hamburger Toggle Button (visível < 1024px) */}
+            {/* Mobile / Tablet Hamburger Toggle Button com rotação suave */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl text-gray-300 hover:text-white bg-gray-900/80 hover:bg-gray-800 border border-gray-700/80 transition cursor-pointer"
+              className="lg:hidden p-2 rounded-xl text-gray-300 hover:text-white bg-gray-900/80 hover:bg-gray-800 border border-gray-700/80 transition-all cursor-pointer"
               aria-label={mobileMenuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-5 h-5 text-amber-400" /> : <Menu className="w-5 h-5" />}
+              <div className={`transition-transform duration-200 ${mobileMenuOpen ? 'rotate-90 text-amber-400' : ''}`}>
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </div>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Drawer Dropdown Menu com Backdrop */}
-      {mobileMenuOpen && (
-        <>
-          {/* Backdrop semi-transparente para fechar ao clicar fora */}
-          <div
-            className="fixed inset-0 top-16 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
-            onClick={() => setMobileMenuOpen(false)}
-          />
+      {/* Backdrop com transição suave de opacidade */}
+      <div
+        className={`fixed inset-0 top-16 bg-black/60 backdrop-blur-sm z-40 lg:hidden transition-opacity duration-300 ${
+          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setMobileMenuOpen(false)}
+        aria-hidden="true"
+      />
 
-          {/* Painel do Menu Mobile */}
-          <div className="relative z-50 lg:hidden border-t border-gray-800/90 bg-[#0b0f17]/98 backdrop-blur-2xl px-4 py-4 space-y-4 shadow-2xl">
-            {/* Seção 1: Navegação Principal de Abas */}
-            <div>
-              <div className="text-[10px] font-bold text-gray-500 uppercase tracking-wider px-2 mb-2">
-                Navegação do Painel
-              </div>
-              <div className="space-y-1.5">
-                {navTabs.map((tab) => {
-                  const Icon = tab.icon;
-                  const isActive = activeTab === tab.id;
-                  return (
-                    <button
-                      key={tab.id}
-                      onClick={() => handleTabClick(tab.id)}
-                      className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-xs font-semibold transition cursor-pointer ${
+      {/* Painel do Menu Mobile com animação fluida (slide-down + fade) */}
+      <div
+        className={`fixed top-16 left-0 right-0 z-50 lg:hidden border-b border-gray-800 bg-[#0b0f17]/98 backdrop-blur-2xl px-4 py-3.5 shadow-2xl transition-all duration-300 ease-out origin-top ${
+          mobileMenuOpen
+            ? 'translate-y-0 opacity-100 pointer-events-auto'
+            : '-translate-y-3 opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="space-y-2.5">
+          {/* Navegação Principal das Abas */}
+          <div className="space-y-1">
+            {navTabs.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => handleTabClick(tab.id)}
+                  className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                    isActive
+                      ? 'bg-amber-500 text-gray-950 font-bold shadow-md shadow-amber-500/25'
+                      : 'text-gray-300 hover:text-white hover:bg-gray-900/80'
+                  }`}
+                >
+                  <div className="flex items-center space-x-2.5">
+                    <Icon className={`w-4 h-4 ${isActive ? 'text-gray-950' : 'text-amber-400'}`} />
+                    <span>{tab.label}</span>
+                  </div>
+                  {tab.badge && (
+                    <span
+                      className={`text-[9px] px-2 py-0.5 rounded-full font-bold uppercase ${
                         isActive
-                          ? 'bg-amber-500 text-gray-950 font-bold shadow-md shadow-amber-500/25'
-                          : 'text-gray-300 hover:text-white hover:bg-gray-900/80 border border-gray-800/50'
+                          ? 'bg-gray-950/20 text-gray-950'
+                          : 'bg-gray-800 text-gray-300 border border-gray-700'
                       }`}
                     >
-                      <div className="flex items-center space-x-3">
-                        <Icon className={`w-4 h-4 ${isActive ? 'text-gray-950' : 'text-amber-400'}`} />
-                        <span>{tab.label}</span>
-                      </div>
-                      {tab.badge && (
-                        <span
-                          className={`text-[9px] px-2 py-0.5 rounded-full font-bold uppercase ${
-                            isActive
-                              ? 'bg-gray-950/20 text-gray-950'
-                              : 'bg-gray-800 text-gray-300 border border-gray-700'
-                          }`}
-                        >
-                          {tab.badge}
-                        </span>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Seção 2: Entregas Oficiais & Recursos */}
-            <div className="pt-3 border-t border-gray-800/80">
-              <div className="text-[10px] font-bold text-gray-500 uppercase tracking-wider px-2 mb-2">
-                Entregas do Projeto
-              </div>
-              <div className="grid grid-cols-1 gap-2">
-                <a
-                  href="/chess_games.csv"
-                  download="chess_games.csv"
-                  className="flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl text-xs text-gray-200 hover:text-white bg-gray-900/80 hover:bg-gray-800 border border-gray-800 cursor-pointer"
-                >
-                  <Download className="w-4 h-4 text-amber-400" />
-                  <span>Baixar Base Oficial (chess_games.csv)</span>
-                </a>
-
-                <a
-                  href="/prototipo_dashboard.jpg"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl text-xs text-gray-200 hover:text-white bg-gray-900/80 hover:bg-gray-800 border border-gray-800 cursor-pointer"
-                >
-                  <ImageIcon className="w-4 h-4 text-amber-400" />
-                  <span>Ver Protótipo de Interface (Entrega 3)</span>
-                </a>
-
-                <a
-                  href="https://github.com/joaopereirajp/chess_bi"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl text-xs text-gray-200 hover:text-white bg-gray-900/80 hover:bg-gray-800 border border-gray-800 cursor-pointer"
-                >
-                  <ExternalLink className="w-4 h-4 text-amber-400" />
-                  <span>Repositório no GitHub (Código-Fonte)</span>
-                </a>
-
-                <a
-                  href="https://www.kaggle.com/datasets/datasnaek/chess"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl text-xs text-emerald-400 hover:text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/25 cursor-pointer"
-                >
-                  <Sparkles className="w-4 h-4" />
-                  <span>Base Original no Kaggle (20.058 jogos)</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Rodapé informativo */}
-            <div className="pt-2 text-[11px] text-gray-500 px-2 flex items-center justify-between">
-              <span>Lichess Games • Projeto Integrador</span>
-              <span className="flex items-center space-x-1 text-emerald-400 font-semibold">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Online</span>
-              </span>
-            </div>
+                      {tab.badge}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
-        </>
-      )}
+
+          {/* Ações Rápidas Compactas (Protótipo & Base CSV) */}
+          <div className="pt-2 border-t border-gray-800/70 grid grid-cols-2 gap-2 text-xs">
+            <a
+              href="/prototipo_dashboard.jpg"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center space-x-1.5 py-2 px-2.5 rounded-xl bg-gray-900/70 hover:bg-gray-800 border border-gray-800 text-gray-300 hover:text-white transition cursor-pointer"
+            >
+              <ImageIcon className="w-3.5 h-3.5 text-amber-400" />
+              <span className="font-medium text-[11px]">Protótipo (Img)</span>
+            </a>
+
+            <a
+              href="/chess_games.csv"
+              download="chess_games.csv"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center space-x-1.5 py-2 px-2.5 rounded-xl bg-gray-900/70 hover:bg-gray-800 border border-gray-800 text-gray-300 hover:text-white transition cursor-pointer"
+            >
+              <Download className="w-3.5 h-3.5 text-amber-400" />
+              <span className="font-medium text-[11px]">Base (CSV)</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }
