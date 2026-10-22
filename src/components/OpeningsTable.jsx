@@ -14,7 +14,7 @@ import {
   Trophy,
 } from 'lucide-react';
 
-export default function OpeningsTable({ openings }) {
+export default function OpeningsTable({ openings, theme = 'dark' }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFamily, setSelectedFamily] = useState('Todas');
   const [sortBy, setSortBy] = useState('white_win_pct');
@@ -84,9 +84,9 @@ export default function OpeningsTable({ openings }) {
       return <ArrowUpDown className="w-3 h-3 opacity-40 ml-1 inline-block" />;
     }
     return sortDesc ? (
-      <ArrowDown className="w-3 h-3 text-amber-400 ml-1 inline-block" />
+      <ArrowDown className="w-3 h-3 text-amber-500 dark:text-amber-400 ml-1 inline-block" />
     ) : (
-      <ArrowUp className="w-3 h-3 text-amber-400 ml-1 inline-block" />
+      <ArrowUp className="w-3 h-3 text-amber-500 dark:text-amber-400 ml-1 inline-block" />
     );
   };
 
@@ -135,28 +135,28 @@ export default function OpeningsTable({ openings }) {
   };
 
   return (
-    <div className="glass-panel rounded-2xl p-5 border border-gray-800 shadow-xl">
+    <div className="glass-panel rounded-2xl p-3.5 sm:p-5 border border-slate-200 dark:border-gray-800 shadow-sm dark:shadow-xl">
       {/* Table Header: Title, Controls, Export */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4 pb-4 border-b border-gray-800/80">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 sm:gap-4 mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-slate-200 dark:border-gray-800/80">
         <div>
           <div className="flex items-center space-x-2">
-            <h3 className="text-base font-bold text-white tracking-tight flex items-center space-x-2">
+            <h3 className="text-sm sm:text-base font-bold text-slate-950 dark:text-white tracking-tight flex items-center space-x-2">
               <span>Tabela Analítica de Aberturas</span>
-              <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              <span className="text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30">
                 {totalItems} de {openings?.length || 0} aberturas
               </span>
             </h3>
           </div>
-          <p className="text-xs text-gray-400 mt-0.5">
+          <p className="text-[11px] sm:text-xs text-slate-700 dark:text-gray-400 font-medium mt-0.5">
             Explore taxas de vitória, códigos ECO e duração de cada abertura (mínimo de 40 partidas)
           </p>
         </div>
 
         {/* Right side: Search and CSV Export */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+        <div className="flex items-center gap-2">
           {/* Search Input */}
-          <div className="relative w-full sm:w-64">
-            <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <div className="relative flex-1 sm:w-64">
+            <Search className="w-4 h-4 text-slate-500 dark:text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Buscar abertura ou ECO..."
@@ -165,26 +165,27 @@ export default function OpeningsTable({ openings }) {
                 setSearchTerm(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full pl-9 pr-3 py-2 bg-gray-900/80 border border-gray-700/60 rounded-xl text-xs text-white placeholder-gray-500 focus:outline-none focus:border-amber-500/80 focus:ring-1 focus:ring-amber-500/50 transition"
+              className="w-full pl-9 pr-3 py-1.5 sm:py-2 bg-white dark:bg-gray-900/80 border border-slate-300 dark:border-gray-700/60 rounded-xl text-xs text-slate-950 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 font-medium focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500/50 transition shadow-xs"
             />
           </div>
 
           {/* Export CSV Button */}
           <button
             onClick={handleExportCsv}
-            className="flex items-center justify-center space-x-1.5 px-3 py-2 bg-gray-800 hover:bg-gray-700/80 text-gray-200 hover:text-white border border-gray-700 rounded-xl text-xs font-semibold transition cursor-pointer shrink-0"
+            className="flex items-center justify-center space-x-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 bg-white dark:bg-gray-800 hover:bg-slate-50 dark:hover:bg-gray-700/80 text-slate-800 dark:text-gray-200 hover:text-slate-950 dark:hover:text-white border border-slate-300 dark:border-gray-700 rounded-xl text-xs font-bold transition cursor-pointer shrink-0 shadow-xs"
             title="Exportar dados filtrados da tabela para arquivo CSV"
           >
-            <FileSpreadsheet className="w-3.5 h-3.5 text-amber-400" />
-            <span>Exportar CSV</span>
+            <FileSpreadsheet className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+            <span className="hidden sm:inline">Exportar CSV</span>
+            <span className="sm:hidden">CSV</span>
           </button>
         </div>
       </div>
 
       {/* Quick Family Filter Pills */}
-      <div className="flex items-center space-x-2 overflow-x-auto pb-3 mb-3 text-xs scrollbar-none">
-        <span className="text-[11px] font-semibold text-gray-400 shrink-0 flex items-center space-x-1 mr-1">
-          <Filter className="w-3 h-3 text-amber-400" />
+      <div className="flex items-center space-x-2 overflow-x-auto pb-2.5 mb-2 text-xs no-scrollbar">
+        <span className="text-[11px] font-bold text-slate-700 dark:text-gray-400 shrink-0 flex items-center space-x-1 mr-1">
+          <Filter className="w-3 h-3 text-amber-600 dark:text-amber-400" />
           <span>Famílias:</span>
         </span>
         {popularFamilies.map((fam) => {
@@ -196,10 +197,10 @@ export default function OpeningsTable({ openings }) {
                 setSelectedFamily(fam);
                 setCurrentPage(1);
               }}
-              className={`px-2.5 py-1 rounded-lg text-xs font-medium transition cursor-pointer shrink-0 ${
+              className={`px-2.5 py-1 rounded-lg text-xs transition cursor-pointer shrink-0 ${
                 isSelected
-                  ? 'bg-amber-500 text-gray-950 font-bold shadow-sm'
-                  : 'bg-gray-900/80 text-gray-300 hover:bg-gray-800 hover:text-white border border-gray-800'
+                  ? 'bg-amber-500 text-gray-950 font-black shadow-xs'
+                  : 'bg-slate-100 dark:bg-gray-900/80 text-slate-800 dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-gray-800 hover:text-slate-950 dark:hover:text-white border border-slate-200 dark:border-gray-800 font-bold'
               }`}
             >
               {fam}
@@ -208,15 +209,21 @@ export default function OpeningsTable({ openings }) {
         })}
       </div>
 
+      {/* Mobile Swipe Hint */}
+      <div className="flex sm:hidden items-center justify-between px-2.5 py-1.5 mb-2 rounded-lg bg-slate-100 dark:bg-gray-900/60 border border-slate-200 dark:border-gray-800 text-[10px] text-slate-700 dark:text-gray-400 font-medium">
+        <span>👈 Deslize para ver todas as colunas 👉</span>
+        <span className="text-amber-800 dark:text-amber-400 font-bold">{totalItems} itens</span>
+      </div>
+
       {/* Table Container */}
-      <div className="overflow-x-auto rounded-xl border border-gray-800/80">
+      <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-gray-800/80 no-scrollbar shadow-xs">
         <table className="w-full text-left border-collapse text-xs">
           <thead>
-            <tr className="bg-gray-900/90 text-gray-400 uppercase font-semibold text-[11px] border-b border-gray-800">
-              <th className="py-3 px-4">
+            <tr className="bg-slate-100 dark:bg-gray-900/90 text-slate-800 dark:text-gray-300 uppercase font-black text-[11px] border-b border-slate-300 dark:border-gray-800">
+              <th className="py-3 px-3 sm:px-4 sticky left-0 bg-slate-100 dark:bg-[#0f172a] z-20 shadow-[2px_0_6px_rgba(0,0,0,0.06)] dark:shadow-[2px_0_6px_rgba(0,0,0,0.5)] min-w-[150px] sm:min-w-0">
                 <button
                   onClick={() => handleSort('name')}
-                  className="flex items-center space-x-1 hover:text-white cursor-pointer"
+                  className="flex items-center space-x-1 hover:text-slate-950 dark:hover:text-white cursor-pointer font-black"
                 >
                   <span>Abertura / Família</span>
                   {renderSortIndicator('name')}
@@ -225,7 +232,7 @@ export default function OpeningsTable({ openings }) {
               <th className="py-3 px-3">
                 <button
                   onClick={() => handleSort('eco')}
-                  className="flex items-center space-x-1 hover:text-white cursor-pointer"
+                  className="flex items-center space-x-1 hover:text-slate-950 dark:hover:text-white cursor-pointer font-black"
                 >
                   <span>ECO</span>
                   {renderSortIndicator('eco')}
@@ -234,7 +241,7 @@ export default function OpeningsTable({ openings }) {
               <th className="py-3 px-3 text-right">
                 <button
                   onClick={() => handleSort('total_games')}
-                  className="flex items-center space-x-1 ml-auto hover:text-white cursor-pointer"
+                  className="flex items-center space-x-1 ml-auto hover:text-slate-950 dark:hover:text-white cursor-pointer font-black"
                 >
                   <span>Partidas</span>
                   {renderSortIndicator('total_games')}
@@ -243,7 +250,7 @@ export default function OpeningsTable({ openings }) {
               <th className="py-3 px-3 text-right">
                 <button
                   onClick={() => handleSort('white_win_pct')}
-                  className="flex items-center space-x-1 ml-auto text-amber-400 hover:text-amber-300 cursor-pointer"
+                  className="flex items-center space-x-1 ml-auto text-amber-700 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300 cursor-pointer font-black"
                 >
                   <span>% Vit. Brancas</span>
                   {renderSortIndicator('white_win_pct')}
@@ -252,19 +259,19 @@ export default function OpeningsTable({ openings }) {
               <th className="py-3 px-3 text-right">
                 <button
                   onClick={() => handleSort('black_win_pct')}
-                  className="flex items-center space-x-1 ml-auto hover:text-white cursor-pointer"
+                  className="flex items-center space-x-1 ml-auto hover:text-slate-950 dark:hover:text-white cursor-pointer font-black"
                 >
                   <span>% Vit. Pretas</span>
                   {renderSortIndicator('black_win_pct')}
                 </button>
               </th>
-              <th className="py-3 px-3 text-center min-w-[130px]">
+              <th className="py-3 px-3 text-center min-w-[130px] font-black">
                 <span>Distribuição (B / E / P)</span>
               </th>
               <th className="py-3 px-4 text-right">
                 <button
                   onClick={() => handleSort('avg_turns')}
-                  className="flex items-center space-x-1 ml-auto hover:text-white cursor-pointer"
+                  className="flex items-center space-x-1 ml-auto hover:text-slate-950 dark:hover:text-white cursor-pointer font-black"
                 >
                   <span>Média Turnos</span>
                   {renderSortIndicator('avg_turns')}
@@ -272,38 +279,38 @@ export default function OpeningsTable({ openings }) {
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-800/60 bg-gray-950/40">
+          <tbody className="divide-y divide-slate-200 dark:divide-gray-800/60 bg-white dark:bg-gray-950/40">
             {pageItems.length > 0 ? (
               pageItems.map((op, idx) => (
-                <tr key={idx} className="hover:bg-gray-800/30 transition-colors">
-                  <td className="py-2.5 px-4">
-                    <div className="font-semibold text-white flex items-center space-x-1.5">
-                      <span>{op.name}</span>
+                <tr key={idx} className="hover:bg-amber-50/40 dark:hover:bg-gray-800/30 transition-colors">
+                  <td className="py-2.5 px-3 sm:px-4 sticky left-0 bg-white dark:bg-[#0b0f17] z-10 shadow-[2px_0_6px_rgba(0,0,0,0.04)] dark:shadow-[2px_0_6px_rgba(0,0,0,0.5)]">
+                    <div className="font-bold text-slate-950 dark:text-white flex items-center space-x-1.5 max-w-[140px] sm:max-w-none">
+                      <span className="truncate">{op.name}</span>
                       {op.white_win_pct >= 65 && (
-                        <span className="text-[9px] px-1 py-0.2 rounded bg-amber-500/15 text-amber-400 border border-amber-500/30 font-bold shrink-0">
+                        <span className="text-[9px] px-1 py-0.2 rounded bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-500/35 font-bold shrink-0">
                           Top
                         </span>
                       )}
                     </div>
-                    <div className="text-[10px] text-gray-500">{op.family}</div>
+                    <div className="text-[10px] text-slate-600 dark:text-gray-400 font-medium truncate max-w-[140px] sm:max-w-none">{op.family}</div>
                   </td>
                   <td className="py-2.5 px-3">
-                    <span className="px-1.5 py-0.5 rounded bg-gray-900 text-gray-300 font-mono text-[10px] border border-gray-700">
+                    <span className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-gray-900 text-slate-900 dark:text-gray-200 font-mono font-bold text-[10px] border border-slate-200 dark:border-gray-700">
                       {op.eco}
                     </span>
                   </td>
-                  <td className="py-2.5 px-3 text-right font-medium text-gray-300">
-                    {op.total_games.toLocaleString()}
+                  <td className="py-2.5 px-3 text-right font-bold text-slate-900 dark:text-gray-300">
+                    {op.total_games.toLocaleString('pt-BR')}
                   </td>
-                  <td className="py-2.5 px-3 text-right font-extrabold text-amber-400">
+                  <td className="py-2.5 px-3 text-right font-black text-amber-700 dark:text-amber-400">
                     {op.white_win_pct}%
                   </td>
-                  <td className="py-2.5 px-3 text-right text-gray-400">
+                  <td className="py-2.5 px-3 text-right font-bold text-slate-800 dark:text-gray-400">
                     {op.black_win_pct}%
                   </td>
                   {/* Mini Tripartite Bar */}
                   <td className="py-2.5 px-3">
-                    <div className="w-full h-2 rounded bg-gray-900 overflow-hidden flex shadow-inner">
+                    <div className="w-full h-2 rounded bg-slate-200 dark:bg-gray-900 overflow-hidden flex shadow-inner">
                       <div
                         className="bg-amber-400 h-full"
                         style={{ width: `${op.white_win_pct}%` }}
@@ -315,25 +322,25 @@ export default function OpeningsTable({ openings }) {
                         title={`Empate: ${op.draw_pct}%`}
                       />
                       <div
-                        className="bg-gray-700 h-full"
+                        className="bg-slate-700 dark:bg-gray-700 h-full"
                         style={{ width: `${op.black_win_pct}%` }}
                         title={`Pretas: ${op.black_win_pct}%`}
                       />
                     </div>
-                    <div className="flex justify-between text-[8px] text-gray-500 mt-0.5 px-0.5 font-mono">
+                    <div className="flex justify-between text-[8px] text-slate-600 dark:text-gray-400 mt-0.5 px-0.5 font-mono font-medium">
                       <span>{op.white_win_pct}%</span>
                       <span>{op.draw_pct}%</span>
                       <span>{op.black_win_pct}%</span>
                     </div>
                   </td>
-                  <td className="py-2.5 px-4 text-right text-emerald-400 font-medium">
+                  <td className="py-2.5 px-4 text-right text-emerald-700 dark:text-emerald-400 font-bold">
                     {op.avg_turns}t
                   </td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan={7} className="py-8 text-center text-gray-500 text-xs">
+                <td colSpan={7} className="py-8 text-center text-slate-600 dark:text-gray-400 text-xs font-medium">
                   Nenhuma abertura encontrada correspondente aos filtros.
                 </td>
               </tr>
@@ -343,16 +350,16 @@ export default function OpeningsTable({ openings }) {
       </div>
 
       {/* Pagination Footer */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mt-4 pt-3 border-t border-gray-800/80 text-xs text-gray-400">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mt-4 pt-3 border-t border-slate-200 dark:border-gray-800/80 text-xs text-slate-800 dark:text-gray-400 font-medium">
         <div className="flex items-center space-x-3">
           <span>
-            Mostrando <strong>{totalItems > 0 ? startIndex + 1 : 0}</strong> a{' '}
-            <strong>{Math.min(startIndex + pageSize, totalItems)}</strong> de{' '}
-            <strong>{totalItems}</strong> aberturas
+            Mostrando <strong className="text-slate-950 dark:text-white font-bold">{totalItems > 0 ? startIndex + 1 : 0}</strong> a{' '}
+            <strong className="text-slate-950 dark:text-white font-bold">{Math.min(startIndex + pageSize, totalItems)}</strong> de{' '}
+            <strong className="text-slate-950 dark:text-white font-bold">{totalItems}</strong> aberturas
           </span>
 
           {/* Page Size Selector */}
-          <div className="flex items-center space-x-1.5 text-xs text-gray-400">
+          <div className="flex items-center space-x-1.5 text-xs text-slate-800 dark:text-gray-400 font-medium">
             <span>Linhas:</span>
             <select
               value={pageSize}
@@ -360,7 +367,7 @@ export default function OpeningsTable({ openings }) {
                 setPageSize(Number(e.target.value));
                 setCurrentPage(1);
               }}
-              className="bg-gray-900 border border-gray-700 rounded-lg px-2 py-1 text-xs text-gray-200 focus:outline-none focus:border-amber-500 cursor-pointer"
+              className="bg-white dark:bg-gray-900 border border-slate-300 dark:border-gray-700 rounded-lg px-2 py-1 text-xs text-slate-900 dark:text-gray-200 font-bold focus:outline-none focus:border-amber-500 cursor-pointer shadow-xs"
             >
               <option value={10}>10</option>
               <option value={15}>15</option>
@@ -375,20 +382,20 @@ export default function OpeningsTable({ openings }) {
           <button
             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
             disabled={validCurrentPage <= 1}
-            className="p-1.5 rounded-lg bg-gray-900 border border-gray-800 text-gray-300 hover:text-white hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer transition"
+            className="p-1.5 rounded-lg bg-white dark:bg-gray-900 border border-slate-300 dark:border-gray-800 text-slate-800 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer transition shadow-xs"
             title="Página Anterior"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
 
-          <span className="px-2.5 py-1 rounded-lg bg-gray-900 text-xs font-semibold text-amber-400 border border-gray-800">
+          <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-gray-900 text-xs font-bold text-amber-700 dark:text-amber-400 border border-slate-200 dark:border-gray-800">
             {validCurrentPage} / {totalPages}
           </span>
 
           <button
             onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
             disabled={validCurrentPage >= totalPages}
-            className="p-1.5 rounded-lg bg-gray-900 border border-gray-800 text-gray-300 hover:text-white hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer transition"
+            className="p-1.5 rounded-lg bg-white dark:bg-gray-900 border border-slate-300 dark:border-gray-800 text-slate-800 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer transition shadow-xs"
             title="Próxima Página"
           >
             <ChevronRight className="w-4 h-4" />

@@ -21,7 +21,25 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR" className="dark h-full">
-      <body className="min-h-full flex flex-col bg-[#0b0f17] text-gray-100 antialiased selection:bg-amber-500/30 selection:text-amber-200">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const savedTheme = localStorage.getItem('chess_bi_theme');
+                if (savedTheme === 'light') {
+                  document.documentElement.classList.remove('dark');
+                  document.documentElement.classList.add('light');
+                } else {
+                  document.documentElement.classList.add('dark');
+                  document.documentElement.classList.remove('light');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-slate-100 dark:bg-[#0b0f17] text-slate-900 dark:text-gray-100 antialiased selection:bg-amber-500/30 selection:text-amber-800 dark:selection:text-amber-200 transition-colors duration-200">
         {children}
       </body>
     </html>

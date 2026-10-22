@@ -88,7 +88,7 @@ Conforme especificado nas diretrizes acadêmicas do Projeto Integrador, este rep
 
 ## 🖼️ Telas e Módulos do Sistema
 
-### 📊 1. Tabela Analítica de Aberturas (Aba "Aberturas")
+### 📊 1. Tabela Analítica de Aberturas (Integrada ao Dashboard)
 Permite explorar as mais de 130 variações com filtros por famílias consagradas (*Sicilian*, *French*, *Queen's*, *King's*, *Caro-Kann*), busca por código ECO, minigráficos de distribuição e **exportação em planilha CSV** (`FileSpreadsheet`):
 
 <div align="center">
@@ -159,6 +159,14 @@ chess_bi/
    - *Mestre / Especialista:* `2100+` (717 partidas • 3.6%)
 3. `time_category`: Agrupamento dos controles de tempo em *Bullet*, *Blitz*, *Rapid* e *Clássico*.
 4. `opening_family`: Agrupamento canônico da família da abertura (ex: *Sicilian*, *French*, *Queen's Gambit*).
+
+---
+
+### 🎨 Suporte a Tema Dark & Light (Padrão: Dark)
+O dashboard possui alternador de tema instantâneo acessível pelo botão de sol/lua no topo do Navbar e no drawer mobile:
+* **Modo Escuro (Padrão):** Paleta noturna profissional (`#0b0f17`), cartões em vidro acrílico (*glassmorphism*) e acentos âmbar/dourado de alto contraste.
+* **Modo Claro:** Interface clean com canvas slate (`bg-slate-100`), cartões em branco puro sólido (`#ffffff`) com bordas nítidas, tipografia de altíssimo contraste (`text-slate-950` / `text-slate-900`) e gráficos adaptados.
+* **Persistência Automática:** A preferência é memorizada no `localStorage` (`chess_bi_theme`) com script inline anti-FOUC para prevenir flashes ao recarregar.
 
 ---
 

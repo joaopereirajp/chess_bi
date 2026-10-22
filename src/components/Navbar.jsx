@@ -3,16 +3,17 @@
 import { useState, useEffect } from 'react';
 import {
   LayoutDashboard,
-  Table2,
   BookOpen,
   Image as ImageIcon,
   Download,
   Menu,
   X,
   Users,
+  Sun,
+  Moon,
 } from 'lucide-react';
 
-export default function Navbar({ onSelectTab, activeTab }) {
+export default function Navbar({ onSelectTab, activeTab, theme = 'dark', onToggleTheme }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
@@ -45,12 +46,6 @@ export default function Navbar({ onSelectTab, activeTab }) {
       badge: null,
     },
     {
-      id: 'aberturas',
-      label: 'Aberturas',
-      icon: Table2,
-      badge: '130+',
-    },
-    {
       id: 'conclusoes',
       label: 'Insights & Conclusões',
       icon: BookOpen,
@@ -70,32 +65,32 @@ export default function Navbar({ onSelectTab, activeTab }) {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-800/80 bg-[#0b0f17]/95 backdrop-blur-xl shadow-2xl">
+    <header className="sticky top-0 z-50 border-b border-slate-200 dark:border-gray-800/80 bg-white/95 dark:bg-[#0b0f17]/95 backdrop-blur-xl shadow-xs dark:shadow-2xl transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-2 sm:gap-4">
           {/* Left: Brand Identity */}
           <div className="flex items-center space-x-2.5 shrink-0">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 via-amber-600 to-amber-700 flex items-center justify-center shadow-lg shadow-amber-500/20 text-white font-black text-xl border border-amber-400/30 select-none">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 via-amber-600 to-amber-700 flex items-center justify-center shadow-md shadow-amber-500/20 text-white font-black text-xl border border-amber-400/30 select-none">
               ♟
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <span className="text-base sm:text-lg font-extrabold text-white tracking-tight">
-                  Chess<span className="text-amber-400">BI</span>
+                <span className="text-base sm:text-lg font-black text-slate-950 dark:text-white tracking-tight">
+                  Chess<span className="text-amber-600 dark:text-amber-400">BI</span>
                 </span>
-                <span className="hidden min-[360px]:inline-flex text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/25 uppercase tracking-wider">
+                <span className="hidden min-[360px]:inline-flex text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-900 dark:text-amber-300 border border-amber-500/30 uppercase tracking-wider">
                   Etapa 2
                 </span>
               </div>
-              <div className="hidden sm:flex items-center space-x-1.5 text-[11px] text-gray-400 font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="hidden sm:flex items-center space-x-1.5 text-[11px] text-slate-700 dark:text-gray-400 font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
                 <span>20.058 Jogos (Lichess)</span>
               </div>
             </div>
           </div>
 
           {/* Center: Desktop Segmented Navigation Tabs (visível >= 1024px) */}
-          <nav className="hidden lg:flex items-center bg-gray-950/80 p-1 rounded-xl border border-gray-800 shadow-inner">
+          <nav className="hidden lg:flex items-center bg-slate-100 dark:bg-gray-950/80 p-1 rounded-xl border border-slate-200 dark:border-gray-800 shadow-inner">
             {navTabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -103,20 +98,20 @@ export default function Navbar({ onSelectTab, activeTab }) {
                 <button
                   key={tab.id}
                   onClick={() => handleTabClick(tab.id)}
-                  className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-amber-500 text-gray-950 font-bold shadow-md shadow-amber-500/20'
-                      : 'text-gray-400 hover:text-white hover:bg-gray-900/60'
+                      ? 'bg-amber-500 text-gray-950 shadow-sm'
+                      : 'text-slate-800 dark:text-gray-400 hover:text-slate-950 dark:hover:text-white hover:bg-white/80 dark:hover:bg-gray-900/60'
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-gray-950' : 'text-gray-400'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-gray-950' : 'text-slate-600 dark:text-gray-400'}`} />
                   <span>{tab.label}</span>
                   {tab.badge && (
                     <span
-                      className={`text-[9px] px-1.5 py-0.2 rounded-full font-bold uppercase ${
+                      className={`text-[9px] px-1.5 py-0.2 rounded-full font-black uppercase ${
                         isActive
                           ? 'bg-gray-950/20 text-gray-950'
-                          : 'bg-gray-800 text-gray-400 border border-gray-700/60'
+                          : 'bg-slate-200 dark:bg-gray-800 text-slate-800 dark:text-gray-300 border border-slate-300 dark:border-gray-700/60'
                       }`}
                     >
                       {tab.badge}
@@ -127,17 +122,17 @@ export default function Navbar({ onSelectTab, activeTab }) {
             })}
           </nav>
 
-          {/* Right: Quick Deliverables Actions & Hamburger Toggle */}
+          {/* Right: Deliverables, Theme Switcher & Actions */}
           <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
             {/* Protótipo Link (Desktop e Tablet) */}
             <a
               href={`${basePath}/prototipo_dashboard.jpg`}
               target="_blank"
               rel="noreferrer"
-              className="hidden sm:flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-gray-300 hover:text-white bg-gray-900/60 hover:bg-gray-800 border border-gray-800 transition cursor-pointer"
+              className="hidden sm:flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-800 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white bg-white hover:bg-slate-50 dark:bg-gray-900/60 dark:hover:bg-gray-800 border border-slate-300 dark:border-gray-800 transition cursor-pointer shadow-xs"
               title="Visualizar Protótipo da Entrega 3"
             >
-              <ImageIcon className="w-3.5 h-3.5 text-amber-400" />
+              <ImageIcon className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
               <span className="hidden md:inline">Protótipo</span>
             </a>
 
@@ -145,19 +140,33 @@ export default function Navbar({ onSelectTab, activeTab }) {
             <a
               href={`${basePath}/chess_games.csv`}
               download="chess_games.csv"
-              className="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-200 hover:text-white bg-gray-800/80 hover:bg-gray-700/80 border border-gray-700 transition cursor-pointer shadow-sm"
+              className="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold text-slate-900 dark:text-gray-200 hover:text-slate-950 dark:hover:text-white bg-white hover:bg-slate-50 dark:bg-gray-800/80 dark:hover:bg-gray-700/80 border border-slate-300 dark:border-gray-700 transition cursor-pointer shadow-xs"
               title="Baixar Base de Dados Unificada (chess_games.csv)"
             >
-              <Download className="w-3.5 h-3.5 text-amber-400" />
+              <Download className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
               <span className="hidden md:inline">Baixar Base</span>
             </a>
+
+            {/* Theme Toggle Button (Desktop & Mobile header) */}
+            <button
+              onClick={onToggleTheme}
+              className="p-1.5 sm:p-2 rounded-xl text-slate-800 hover:text-slate-950 bg-white hover:bg-slate-50 border border-slate-300 dark:text-gray-300 dark:hover:text-white dark:bg-gray-900/60 dark:hover:bg-gray-800 dark:border-gray-800 transition-all cursor-pointer shadow-xs"
+              title={theme === 'dark' ? 'Alternar para Modo Claro' : 'Alternar para Modo Escuro'}
+              aria-label="Alternar tema visual"
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-4 h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-4 h-4 text-slate-800" />
+              )}
+            </button>
 
             {/* GitHub Repo */}
             <a
               href="https://github.com/joaopereirajp/chess_bi"
               target="_blank"
               rel="noreferrer"
-              className="p-1.5 rounded-lg text-gray-400 hover:text-white bg-gray-900/60 hover:bg-gray-800 border border-gray-800 transition cursor-pointer"
+              className="p-1.5 rounded-lg text-slate-700 hover:text-slate-950 bg-white hover:bg-slate-50 dark:text-gray-400 dark:hover:text-white dark:bg-gray-900/60 dark:hover:bg-gray-800 border border-slate-300 dark:border-gray-800 transition cursor-pointer shadow-xs"
               title="Ver Repositório no GitHub"
             >
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -165,14 +174,14 @@ export default function Navbar({ onSelectTab, activeTab }) {
               </svg>
             </a>
 
-            {/* Mobile / Tablet Hamburger Toggle Button com rotação suave */}
+            {/* Mobile Hamburger Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl text-gray-300 hover:text-white bg-gray-900/80 hover:bg-gray-800 border border-gray-700/80 transition-all cursor-pointer"
+              className="lg:hidden p-2 rounded-xl text-slate-800 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white bg-white hover:bg-slate-50 dark:bg-gray-900/80 dark:hover:bg-gray-800 border border-slate-300 dark:border-gray-700/80 transition-all cursor-pointer shadow-xs"
               aria-label={mobileMenuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
               aria-expanded={mobileMenuOpen}
             >
-              <div className={`transition-transform duration-200 ${mobileMenuOpen ? 'rotate-90 text-amber-400' : ''}`}>
+              <div className={`transition-transform duration-200 ${mobileMenuOpen ? 'rotate-90 text-amber-500' : ''}`}>
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </div>
             </button>
@@ -180,18 +189,18 @@ export default function Navbar({ onSelectTab, activeTab }) {
         </div>
       </div>
 
-      {/* Backdrop com transição suave de opacidade */}
+      {/* Backdrop */}
       <div
-        className={`fixed inset-0 top-16 bg-black/60 backdrop-blur-sm z-40 lg:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 top-16 bg-black/50 backdrop-blur-sm z-40 lg:hidden transition-opacity duration-300 ${
           mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         onClick={() => setMobileMenuOpen(false)}
         aria-hidden="true"
       />
 
-      {/* Painel do Menu Mobile com animação fluida (slide-down + fade) */}
+      {/* Painel do Menu Mobile */}
       <div
-        className={`fixed top-16 left-0 right-0 z-50 lg:hidden border-b border-gray-800 bg-[#0b0f17]/98 backdrop-blur-2xl px-4 py-3.5 shadow-2xl transition-all duration-300 ease-out origin-top ${
+        className={`fixed top-16 left-0 right-0 z-50 lg:hidden border-b border-slate-200 dark:border-gray-800 bg-white/98 dark:bg-[#0b0f17]/98 backdrop-blur-2xl px-4 py-3.5 shadow-2xl transition-all duration-300 ease-out origin-top ${
           mobileMenuOpen
             ? 'translate-y-0 opacity-100 pointer-events-auto'
             : '-translate-y-3 opacity-0 pointer-events-none'
@@ -207,14 +216,14 @@ export default function Navbar({ onSelectTab, activeTab }) {
                 <button
                   key={tab.id}
                   onClick={() => handleTabClick(tab.id)}
-                  className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                  className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-amber-500 text-gray-950 font-bold shadow-md shadow-amber-500/25'
-                      : 'text-gray-300 hover:text-white hover:bg-gray-900/80'
+                      ? 'bg-amber-500 text-gray-950 shadow-sm'
+                      : 'text-slate-800 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-gray-900/80'
                   }`}
                 >
                   <div className="flex items-center space-x-2.5">
-                    <Icon className={`w-4 h-4 ${isActive ? 'text-gray-950' : 'text-amber-400'}`} />
+                    <Icon className={`w-4 h-4 ${isActive ? 'text-gray-950' : 'text-amber-600 dark:text-amber-400'}`} />
                     <span>{tab.label}</span>
                   </div>
                   {tab.badge && (
@@ -222,7 +231,7 @@ export default function Navbar({ onSelectTab, activeTab }) {
                       className={`text-[9px] px-2 py-0.5 rounded-full font-bold uppercase ${
                         isActive
                           ? 'bg-gray-950/20 text-gray-950'
-                          : 'bg-gray-800 text-gray-300 border border-gray-700'
+                          : 'bg-slate-200 dark:bg-gray-800 text-slate-800 dark:text-gray-300 border border-slate-300 dark:border-gray-700'
                       }`}
                     >
                       {tab.badge}
@@ -233,27 +242,53 @@ export default function Navbar({ onSelectTab, activeTab }) {
             })}
           </div>
 
+          {/* Theme Switcher no Menu Mobile */}
+          <div className="pt-2 border-t border-slate-200 dark:border-gray-800/70 flex items-center justify-between">
+            <span className="text-xs font-bold text-slate-800 dark:text-gray-300">
+              Tema Visual
+            </span>
+            <button
+              onClick={() => {
+                onToggleTheme();
+                setMobileMenuOpen(false);
+              }}
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-gray-900 border border-slate-300 dark:border-gray-800 text-slate-900 dark:text-gray-200 cursor-pointer shadow-xs"
+            >
+              {theme === 'dark' ? (
+                <>
+                  <Sun className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Modo Escuro (Mudar)</span>
+                </>
+              ) : (
+                <>
+                  <Moon className="w-3.5 h-3.5 text-slate-800" />
+                  <span>Modo Claro (Mudar)</span>
+                </>
+              )}
+            </button>
+          </div>
+
           {/* Ações Rápidas Compactas (Protótipo & Base CSV) */}
-          <div className="pt-2 border-t border-gray-800/70 grid grid-cols-2 gap-2 text-xs">
+          <div className="pt-2 border-t border-slate-200 dark:border-gray-800/70 grid grid-cols-2 gap-2 text-xs">
             <a
               href={`${basePath}/prototipo_dashboard.jpg`}
               target="_blank"
               rel="noreferrer"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center space-x-1.5 py-2 px-2.5 rounded-xl bg-gray-900/70 hover:bg-gray-800 border border-gray-800 text-gray-300 hover:text-white transition cursor-pointer"
+              className="flex items-center justify-center space-x-1.5 py-2 px-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 dark:bg-gray-900/70 dark:hover:bg-gray-800 border border-slate-200 dark:border-gray-800 text-slate-800 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white transition cursor-pointer font-bold"
             >
-              <ImageIcon className="w-3.5 h-3.5 text-amber-400" />
-              <span className="font-medium text-[11px]">Protótipo (Img)</span>
+              <ImageIcon className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+              <span className="text-[11px]">Protótipo (Img)</span>
             </a>
 
             <a
               href={`${basePath}/chess_games.csv`}
               download="chess_games.csv"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center space-x-1.5 py-2 px-2.5 rounded-xl bg-gray-900/70 hover:bg-gray-800 border border-gray-800 text-gray-300 hover:text-white transition cursor-pointer"
+              className="flex items-center justify-center space-x-1.5 py-2 px-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 dark:bg-gray-900/70 dark:hover:bg-gray-800 border border-slate-200 dark:border-gray-800 text-slate-800 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white transition cursor-pointer font-bold"
             >
-              <Download className="w-3.5 h-3.5 text-amber-400" />
-              <span className="font-medium text-[11px]">Base (CSV)</span>
+              <Download className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+              <span className="text-[11px]">Base (CSV)</span>
             </a>
           </div>
         </div>
