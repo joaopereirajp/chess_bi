@@ -164,13 +164,11 @@ chess_bi/
 
 ## 👥 Equipe do Projeto • Grupo 32
 
-| Integrante | Papel / Responsabilidade no Projeto |
-| :--- | :--- |
-| **Ana Carolina V. Fernandes** | Pesquisa Acadêmica & Análise Exploratória de Dados |
-| **Carlos Armando Munhoz Vilela** | Engenharia de Dados & Pipeline ETL (`process_data.py`) |
-| **Edlaine Paula Silveira** | Business Intelligence & Modelagem de Indicadores |
-| **Fabio Perrone Jorge Miranda** | Visualização de Dados & Desenvolvimento Web |
-| **João Carlos Pereira** | Estratégia, Validação dos Objetivos & Conclusões |
+* **Ana Carolina V. Fernandes**
+* **Carlos Armando Munhoz Vilela**
+* **Edlaine Paula Silveira**
+* **Fabio Perrone Jorge Miranda**
+* **João Carlos Pereira**
 
 ---
 
