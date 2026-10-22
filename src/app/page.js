@@ -67,44 +67,27 @@ export default function Home() {
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Intro banner */}
-        <div className="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2">
-          <div>
-            <div className="flex items-center space-x-2">
-              <a
-                href="https://www.kaggle.com/datasets/datasnaek/chess"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 transition cursor-pointer"
-                title="Abrir base original no Kaggle (Chess Game Dataset)"
-              >
-                <Sparkles className="w-3 h-3" />
-                <span>Base 100% Real • Lichess no Kaggle</span>
-                <ExternalLink className="w-2.5 h-2.5 ml-0.5 opacity-70" />
-              </a>
-              <span className="text-xs text-gray-500">20.058 Jogos Analisados</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1.5">
-              Painel Estratégico de Business Intelligence
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-400 mt-1 max-w-3xl">
-              Análise interativa dos fatores determinantes para a vitória no xadrez: aberturas, tempo de jogo e impacto da proficiência dos enxadristas.
-            </p>
+        <div className="mb-6 pb-2">
+          <div className="flex items-center space-x-2">
+            <a
+              href="https://www.kaggle.com/datasets/datasnaek/chess"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 transition cursor-pointer"
+              title="Abrir base original no Kaggle (Chess Game Dataset)"
+            >
+              <Sparkles className="w-3 h-3" />
+              <span>Base 100% Real • Lichess no Kaggle</span>
+              <ExternalLink className="w-2.5 h-2.5 ml-0.5 opacity-70" />
+            </a>
+            <span className="text-xs text-gray-500">20.058 Jogos Analisados</span>
           </div>
-
-          {/* Quick Info Badges */}
-          <div className="flex items-center gap-2 self-start md:self-auto">
-            <div className="px-3 py-2 rounded-xl bg-gray-900/60 border border-gray-800 text-center">
-              <div className="text-[10px] text-gray-400 uppercase font-semibold">Base Oficial</div>
-              <div className="text-xs font-extrabold text-white mt-0.5 font-mono">chess_games.csv</div>
-            </div>
-            <div className="px-3 py-2 rounded-xl bg-gray-900/60 border border-gray-800 text-center">
-              <div className="text-[10px] text-gray-400 uppercase font-semibold">Status do BI</div>
-              <div className="text-xs font-extrabold text-emerald-400 mt-0.5 flex items-center justify-center space-x-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
-                <span>100% Concluído</span>
-              </div>
-            </div>
-          </div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-2">
+            Painel Estratégico de Business Intelligence
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-400 mt-1 max-w-3xl leading-relaxed">
+            Análise interativa dos fatores determinantes para a vitória no xadrez: eficácia das aberturas, tempo de jogo e impacto da proficiência dos enxadristas.
+          </p>
         </div>
 
         {/* Tab 1: Visão Geral do Dashboard */}
