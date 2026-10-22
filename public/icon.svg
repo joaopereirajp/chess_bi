@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="darkBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141B2D" />
+      <stop offset="100%" stop-color="#080C14" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="40%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#78350F" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="16" flood-color="#F59E0B" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Deep Slate Squircle with Gold Gradient Border -->
+  <rect x="20" y="20" width="472" height="472" rx="116" fill="url(#darkBg)" stroke="url(#goldBorder)" stroke-width="12" />
+
+  <!-- Subtle chessboard pattern -->
+  <g opacity="0.04">
+    <rect x="40" y="40" width="108" height="108" fill="#FFF"/>
+    <rect x="256" y="40" width="108" height="108" fill="#FFF"/>
+    <rect x="148" y="148" width="108" height="108" fill="#FFF"/>
+    <rect x="364" y="148" width="108" height="108" fill="#FFF"/>
+    <rect x="40" y="256" width="108" height="108" fill="#FFF"/>
+    <rect x="256" y="256" width="108" height="108" fill="#FFF"/>
+  </g>
+
+  <!-- Majestic Golden Knight (Lichess piece geometry) -->
+  <g transform="translate(65, 42) scale(8.8)" filter="url(#glow)">
+    <!-- Base / Chest -->
+    <path fill="url(#gold)" stroke="#5B210B" stroke-width="0.7" stroke-linejoin="round"
+      d="M22 10c10.5 1 16.5 8 16 29H15c0-9 10-6.5 8-21z"/>
+    <!-- Head & Muzzle -->
+    <path fill="url(#gold)" stroke="#5B210B" stroke-width="0.7" stroke-linejoin="round"
+      d="M24 18c.38 2.91-5.55 7.37-8 9-3 2-2.82 4.34-5 4-1.042-.94 1.41-3.04 0-3-1 0 .19 1.23-1 2-1 0-4.003 1-4-4 0-2 6-12 6-12s1.89-1.9 2-3.5c-.73-.994-.5-2-.5-3 1-1 3 2.5 3 2.5h2s.78-1.992 2.5-3c1 0 1 3 1 3z"/>
+    <!-- Eye & Nostril -->
+    <circle cx="9" cy="25.5" r="0.9" fill="#080C14" />
+    <ellipse cx="14.5" cy="15.8" rx="0.7" ry="1.4" transform="rotate(30 14.5 15.8)" fill="#080C14" />
+    <!-- Bright Mane Curve -->
+    <path fill="none" stroke="#FEF08A" stroke-width="0.9" stroke-linecap="round" d="m24.55 10.4 c3.15 1 5.65 2.5 7.9 6.75 S35.75 29 35.25 39" />
+  </g>
+
+  <!-- 3 Analytics Data Bars at the Base -->
+  <g transform="translate(296, 348)">
+    <rect x="0" y="42" width="22" height="46" rx="6" fill="#38BDF8" opacity="0.95" />
+    <rect x="30" y="24" width="22" height="64" rx="6" fill="#34D399" opacity="0.95" />
+    <rect x="60" y="0" width="22" height="88" rx="6" fill="#FBBF24" opacity="0.95" />
+  </g>
+</svg>
