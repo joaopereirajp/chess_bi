@@ -229,7 +229,7 @@ export default function OutcomesChart({ statusByTier, theme = 'dark' }) {
           {statusByTier.map((tierData, idx) => (
             <div
               key={idx}
-              className="p-3 rounded-xl bg-slate-50 dark:bg-gray-900/40 border border-slate-200 dark:border-gray-800/80 hover:border-slate-300 dark:hover:border-gray-700 hover:bg-slate-100/80 transition"
+              className="p-3 rounded-xl bg-slate-50 hover:bg-slate-100/80 dark:bg-gray-900/40 dark:hover:bg-gray-800/60 border border-slate-200 dark:border-gray-800/80 hover:border-slate-300 dark:hover:border-gray-700 transition shadow-2xs"
             >
               {/* Row title with count */}
               <div className="flex items-center justify-between text-xs mb-1.5">

@@ -162,14 +162,6 @@ chess_bi/
 
 ---
 
-### 🎨 Suporte a Tema Dark & Light (Padrão: Dark)
-O dashboard possui alternador de tema instantâneo acessível pelo botão de sol/lua no topo do Navbar e no drawer mobile:
-* **Modo Escuro (Padrão):** Paleta noturna profissional (`#0b0f17`), cartões em vidro acrílico (*glassmorphism*) e acentos âmbar/dourado de alto contraste.
-* **Modo Claro:** Interface clean com canvas slate (`bg-slate-100`), cartões em branco puro sólido (`#ffffff`) com bordas nítidas, tipografia de altíssimo contraste (`text-slate-950` / `text-slate-900`) e gráficos adaptados.
-* **Persistência Automática:** A preferência é memorizada no `localStorage` (`chess_bi_theme`) com script inline anti-FOUC para prevenir flashes ao recarregar.
-
----
-
 ## 👥 Equipe do Projeto • Grupo 32
 
 | Integrante | Papel / Responsabilidade no Projeto |
