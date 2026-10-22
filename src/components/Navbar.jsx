@@ -25,9 +25,9 @@ export default function Navbar({ onSelectTab, activeTab }) {
     },
     {
       id: 'conclusoes',
-      label: '3 Conclusões',
+      label: 'Insights & Conclusões',
       icon: BookOpen,
-      badge: 'Etapa 2',
+      badge: 'Oficial',
     },
   ];
 
