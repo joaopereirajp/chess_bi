@@ -13,6 +13,7 @@ import {
 
 export default function Navbar({ onSelectTab, activeTab }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
   // Fechar menu mobile ao redimensionar para telas grandes ou pressionar ESC
   useEffect(() => {
@@ -123,7 +124,7 @@ export default function Navbar({ onSelectTab, activeTab }) {
           <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
             {/* Protótipo Link (Desktop e Tablet) */}
             <a
-              href="/prototipo_dashboard.jpg"
+              href={`${basePath}/prototipo_dashboard.jpg`}
               target="_blank"
               rel="noreferrer"
               className="hidden sm:flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-gray-300 hover:text-white bg-gray-900/60 hover:bg-gray-800 border border-gray-800 transition cursor-pointer"
@@ -135,7 +136,7 @@ export default function Navbar({ onSelectTab, activeTab }) {
 
             {/* Download Base CSV */}
             <a
-              href="/chess_games.csv"
+              href={`${basePath}/chess_games.csv`}
               download="chess_games.csv"
               className="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-200 hover:text-white bg-gray-800/80 hover:bg-gray-700/80 border border-gray-700 transition cursor-pointer shadow-sm"
               title="Baixar Base de Dados Unificada (chess_games.csv)"
@@ -228,7 +229,7 @@ export default function Navbar({ onSelectTab, activeTab }) {
           {/* Ações Rápidas Compactas (Protótipo & Base CSV) */}
           <div className="pt-2 border-t border-gray-800/70 grid grid-cols-2 gap-2 text-xs">
             <a
-              href="/prototipo_dashboard.jpg"
+              href={`${basePath}/prototipo_dashboard.jpg`}
               target="_blank"
               rel="noreferrer"
               onClick={() => setMobileMenuOpen(false)}
@@ -239,7 +240,7 @@ export default function Navbar({ onSelectTab, activeTab }) {
             </a>
 
             <a
-              href="/chess_games.csv"
+              href={`${basePath}/chess_games.csv`}
               download="chess_games.csv"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-center space-x-1.5 py-2 px-2.5 rounded-xl bg-gray-900/70 hover:bg-gray-800 border border-gray-800 text-gray-300 hover:text-white transition cursor-pointer"
