@@ -78,31 +78,31 @@ export default function CreditsTab() {
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Top Hero Banner */}
-      <div className="glass-panel rounded-3xl p-6 sm:p-8 border border-amber-500/30 bg-gradient-to-br from-amber-500/15 via-gray-900/70 to-gray-950 shadow-2xl relative overflow-hidden">
+      <div className="glass-panel rounded-3xl p-6 sm:p-8 border border-amber-500/30 bg-gradient-to-br from-amber-500/15 via-white dark:via-gray-900/70 to-amber-50/50 dark:to-gray-950 shadow-sm dark:shadow-2xl relative overflow-hidden">
         {/* Subtle decorative glow */}
         <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-3">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center space-x-1.5 shadow-sm">
-                <GraduationCap className="w-3.5 h-3.5 text-amber-400" />
+              <span className="text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-500/30 flex items-center space-x-1.5 shadow-xs">
+                <GraduationCap className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
                 <span>Projeto Integrador • Segunda Etapa</span>
               </span>
-              <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center space-x-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30 flex items-center space-x-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
                 <span>Tema: Esporte</span>
               </span>
             </div>
 
             <div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 dark:text-white tracking-tight">
                 Desempenho e Estratégia em Jogos de{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-600 dark:from-amber-400 dark:via-amber-300 dark:to-yellow-500">
                   Xadrez Online
                 </span>
               </h2>
-              <p className="text-xs sm:text-sm text-gray-300 mt-2 max-w-2xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-800 dark:text-gray-300 mt-2 max-w-2xl leading-relaxed font-normal">
                 Painel analítico de Business Intelligence desenvolvido para avaliar os fatores determinantes para a vitória no xadrez, eficácia de aberturas e comportamento dos enxadristas por nível de habilidade.
               </p>
             </div>
@@ -110,11 +110,11 @@ export default function CreditsTab() {
 
           {/* Grupo 32 Spotlight Badge */}
           <div className="shrink-0 self-start md:self-center">
-            <div className="p-5 rounded-2xl bg-gray-950/80 border-2 border-amber-500/50 shadow-xl shadow-amber-500/10 text-center min-w-[180px]">
-              <div className="text-3xl sm:text-4xl font-black text-amber-400 tracking-tight">
+            <div className="p-5 rounded-2xl bg-white dark:bg-gray-950/80 border-2 border-amber-500/50 shadow-md dark:shadow-xl shadow-amber-500/10 text-center min-w-[180px]">
+              <div className="text-3xl sm:text-4xl font-black text-amber-700 dark:text-amber-400 tracking-tight">
                 GRUPO 32
               </div>
-              <div className="mt-2 pt-2 border-t border-gray-800 text-[11px] text-gray-400 font-medium">
+              <div className="mt-2 pt-2 border-t border-slate-200 dark:border-gray-800 text-[11px] text-slate-700 dark:text-gray-400 font-bold">
                 5 Integrantes
               </div>
             </div>
@@ -126,19 +126,19 @@ export default function CreditsTab() {
       <div>
         <div className="flex items-center justify-between mb-4 px-1">
           <div className="flex items-center space-x-2">
-            <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
+            <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20">
               <Users className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
+              <h3 className="text-base sm:text-lg font-bold text-slate-950 dark:text-white tracking-tight">
                 Integrantes da Equipe
               </h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-slate-700 dark:text-gray-400 font-medium">
                 Alunos responsáveis pelo desenvolvimento do projeto e suas entregas
               </p>
             </div>
           </div>
-          <span className="text-xs text-amber-400 font-semibold px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/25">
+          <span className="text-xs text-amber-800 dark:text-amber-400 font-bold px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30">
             Grupo 32
           </span>
         </div>
@@ -148,7 +148,7 @@ export default function CreditsTab() {
           {teamMembers.map((member, idx) => (
             <div
               key={member.name}
-              className="glass-panel rounded-2xl p-4 border border-gray-800/90 hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between group hover:shadow-xl hover:shadow-amber-500/5"
+              className="glass-panel rounded-2xl p-4 border border-slate-200 dark:border-gray-800/90 hover:border-amber-500/50 transition-all duration-300 flex flex-col justify-between group hover:shadow-md shadow-xs"
             >
               <div>
                 {/* Top: Avatar and Piece Icon */}
@@ -156,21 +156,21 @@ export default function CreditsTab() {
                   <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${member.color} flex items-center justify-center text-white font-black text-base shadow-md shadow-amber-500/20 border border-amber-400/30 group-hover:scale-105 transition-transform`}>
                     {member.initials}
                   </div>
-                  <div className="w-8 h-8 rounded-lg bg-gray-950/80 border border-gray-800 flex items-center justify-center text-xl text-amber-400/90 select-none">
+                  <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-gray-950/80 border border-slate-200 dark:border-gray-800 flex items-center justify-center text-xl text-amber-700 dark:text-amber-400 select-none">
                     {member.piece}
                   </div>
                 </div>
 
                 {/* Name */}
-                <h4 className="text-sm font-bold text-white tracking-tight group-hover:text-amber-300 transition-colors leading-snug">
+                <h4 className="text-sm font-bold text-slate-950 dark:text-white tracking-tight group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors leading-snug">
                   {member.name}
                 </h4>
               </div>
 
               {/* Bottom Tag */}
-              <div className="mt-4 pt-2.5 border-t border-gray-800/70 flex items-center justify-between text-[10px]">
-                <span className="text-gray-500">Membro #{idx + 1}</span>
-                <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 font-semibold border border-amber-500/20">
+              <div className="mt-4 pt-2.5 border-t border-slate-200 dark:border-gray-800/70 flex items-center justify-between text-[10px]">
+                <span className="text-slate-600 dark:text-gray-400 font-semibold">Membro #{idx + 1}</span>
+                <span className="px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-400 font-bold border border-amber-500/30">
                   Grupo 32
                 </span>
               </div>
@@ -180,16 +180,16 @@ export default function CreditsTab() {
       </div>
 
       {/* Deliverables Overview Section */}
-      <div className="glass-panel rounded-2xl p-6 border border-gray-800 bg-gray-950/50">
+      <div className="glass-panel rounded-2xl p-6 border border-slate-200 dark:border-gray-800 shadow-sm dark:shadow-xl">
         <div className="flex items-center space-x-2 mb-4">
-          <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
             <CheckCircle2 className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-sm sm:text-base font-bold text-white tracking-tight">
+            <h3 className="text-sm sm:text-base font-bold text-slate-950 dark:text-white tracking-tight">
               Quadro de Entregas Oficiais • Segunda Etapa
             </h3>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-slate-700 dark:text-gray-400 font-medium">
               Todas as 4 entregas obrigatórias consolidadas e validadas pela equipe
             </p>
           </div>
@@ -201,22 +201,22 @@ export default function CreditsTab() {
             return (
               <div
                 key={item.num}
-                className="p-4 rounded-xl bg-gray-900/60 border border-gray-800/80 flex flex-col justify-between"
+                className="p-4 rounded-xl bg-slate-50 dark:bg-gray-900/60 border border-slate-200 dark:border-gray-800/80 flex flex-col justify-between shadow-xs"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-black text-amber-400 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">
+                    <span className="text-xs font-black text-amber-800 dark:text-amber-400 px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/30">
                       Entrega {item.num}
                     </span>
-                    <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30">
                       {item.badge}
                     </span>
                   </div>
-                  <h4 className="text-xs font-bold text-white mt-2 flex items-center space-x-1.5">
-                    <Icon className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <h4 className="text-xs font-bold text-slate-950 dark:text-white mt-2 flex items-center space-x-1.5">
+                    <Icon className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
                     <span>{item.title}</span>
                   </h4>
-                  <p className="text-[11px] text-gray-400 mt-1 leading-relaxed">
+                  <p className="text-[11px] text-slate-700 dark:text-gray-400 mt-1 leading-relaxed font-normal">
                     {item.desc}
                   </p>
                 </div>
