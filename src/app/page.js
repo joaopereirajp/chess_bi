@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import dashboardData from '@/data/dashboard_data.json';
 import Navbar from '@/components/Navbar';
 import FilterBar from '@/components/FilterBar';
@@ -15,6 +15,26 @@ import { Download, FileText, Image as ImageIcon, ExternalLink, Sparkles } from '
 export default function Home() {
   const [activeTab, setActiveTab] = useState('geral');
   const [selectedTier, setSelectedTier] = useState('Todos');
+
+  // Ler ?tab= da URL se presente
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const tabParam = params.get('tab');
+      if (tabParam && ['geral', 'aberturas', 'conclusoes'].includes(tabParam)) {
+        setActiveTab(tabParam);
+      }
+    }
+  }, []);
+
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      url.searchParams.set('tab', tabId);
+      window.history.replaceState(null, '', url.toString());
+    }
+  };
 
   const tiersList = [
     'Iniciante (<1400)',
@@ -63,7 +83,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#0b0f17] flex flex-col">
-      <Navbar onSelectTab={setActiveTab} activeTab={activeTab} />
+      <Navbar onSelectTab={handleTabChange} activeTab={activeTab} />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Intro banner */}
