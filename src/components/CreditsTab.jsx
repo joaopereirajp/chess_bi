@@ -2,51 +2,42 @@
 
 import {
   Users,
-  Award,
   GraduationCap,
-  Sparkles,
   CheckCircle2,
   FolderGit2,
   FileSpreadsheet,
   FileText,
   Image as ImageIcon,
-  ExternalLink,
-  ShieldCheck,
 } from 'lucide-react';
 
 export default function CreditsTab() {
   const teamMembers = [
     {
       name: 'Ana Carolina V. Fernandes',
-      role: 'Pesquisa & Análise de Dados',
       piece: '♛',
       initials: 'AF',
       color: 'from-amber-500 to-amber-700',
     },
     {
       name: 'Carlos Armando Munhoz Vilela',
-      role: 'Engenharia de Dados & ETL',
       piece: '♞',
       initials: 'CV',
       color: 'from-amber-600 to-orange-700',
     },
     {
       name: 'Edlaine Paula Silveira',
-      role: 'Business Intelligence & Modelagem',
       piece: '♝',
       initials: 'ES',
       color: 'from-yellow-500 to-amber-700',
     },
     {
       name: 'Fabio Perrone Jorge Miranda',
-      role: 'Visualização & Desenvolvimento Web',
       piece: '♜',
       initials: 'FM',
       color: 'from-amber-500 to-yellow-600',
     },
     {
       name: 'João Carlos Pereira',
-      role: 'Estratégia & Análise de Resultados',
       piece: '♚',
       initials: 'JP',
       color: 'from-amber-500 to-amber-800',
@@ -120,10 +111,7 @@ export default function CreditsTab() {
           {/* Grupo 32 Spotlight Badge */}
           <div className="shrink-0 self-start md:self-center">
             <div className="p-5 rounded-2xl bg-gray-950/80 border-2 border-amber-500/50 shadow-xl shadow-amber-500/10 text-center min-w-[180px]">
-              <span className="text-[10px] uppercase font-extrabold tracking-widest text-gray-400">
-                Identificação
-              </span>
-              <div className="text-3xl sm:text-4xl font-black text-amber-400 tracking-tight mt-0.5">
+              <div className="text-3xl sm:text-4xl font-black text-amber-400 tracking-tight">
                 GRUPO 32
               </div>
               <div className="mt-2 pt-2 border-t border-gray-800 text-[11px] text-gray-400 font-medium">
@@ -177,11 +165,6 @@ export default function CreditsTab() {
                 <h4 className="text-sm font-bold text-white tracking-tight group-hover:text-amber-300 transition-colors leading-snug">
                   {member.name}
                 </h4>
-
-                {/* Subtitle / Role */}
-                <p className="text-[11px] text-gray-400 mt-1 leading-relaxed">
-                  {member.role}
-                </p>
               </div>
 
               {/* Bottom Tag */}
@@ -240,21 +223,6 @@ export default function CreditsTab() {
               </div>
             );
           })}
-        </div>
-      </div>
-
-      {/* Project Metadata Footer */}
-      <div className="p-4 rounded-2xl bg-gray-900/40 border border-gray-800/60 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400">
-        <div className="flex items-center space-x-2">
-          <ShieldCheck className="w-4 h-4 text-amber-400" />
-          <span>
-            <strong>Projeto Integrador</strong> • Grupo 32 • Tema: Esporte (Xadrez Online)
-          </span>
-        </div>
-        <div className="flex items-center space-x-3 text-[11px] text-gray-500">
-          <span>Fonte: Lichess Kaggle (20.058 partidas)</span>
-          <span>•</span>
-          <span className="text-emerald-400 font-semibold">100% Concluído</span>
         </div>
       </div>
     </div>
