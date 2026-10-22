@@ -67,16 +67,16 @@ export default function Home() {
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Intro banner */}
-        <div className="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2">
           <div>
             <div className="flex items-center space-x-2">
               <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                 <Sparkles className="w-3 h-3" />
-                <span>Base 100% Real • 20.058 Jogos</span>
+                <span>Base 100% Real • Lichess</span>
               </span>
-              <span className="text-xs text-gray-500">Lichess Open Dataset</span>
+              <span className="text-xs text-gray-500">20.058 Jogos Analisados</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1.5">
               Painel Estratégico de Business Intelligence
             </h2>
             <p className="text-xs sm:text-sm text-gray-400 mt-1 max-w-3xl">
@@ -84,24 +84,19 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Deliverables pill links */}
-          <div className="flex flex-wrap items-center gap-2">
-            <a
-              href="/chess_games.csv"
-              download="chess_games.csv"
-              className="flex items-center space-x-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-gray-800 text-gray-200 hover:text-white hover:bg-gray-700 border border-gray-700/60 transition shadow-sm cursor-pointer"
-              title="Baixar Base de Dados de Xadrez (Entrega 2)"
-            >
-              <Download className="w-3.5 h-3.5 text-amber-400" />
-              <span>Baixar Base (CSV)</span>
-            </a>
-            <button
-              onClick={() => setActiveTab('conclusoes')}
-              className="flex items-center space-x-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 border border-amber-500/30 transition shadow-sm cursor-pointer"
-            >
-              <FileText className="w-3.5 h-3.5" />
-              <span>Conclusões</span>
-            </button>
+          {/* Quick Info Badges */}
+          <div className="flex items-center gap-2 self-start md:self-auto">
+            <div className="px-3 py-2 rounded-xl bg-gray-900/60 border border-gray-800 text-center">
+              <div className="text-[10px] text-gray-400 uppercase font-semibold">Base Oficial</div>
+              <div className="text-xs font-extrabold text-white mt-0.5 font-mono">chess_games.csv</div>
+            </div>
+            <div className="px-3 py-2 rounded-xl bg-gray-900/60 border border-gray-800 text-center">
+              <div className="text-[10px] text-gray-400 uppercase font-semibold">Status do BI</div>
+              <div className="text-xs font-extrabold text-emerald-400 mt-0.5 flex items-center justify-center space-x-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
+                <span>100% Concluído</span>
+              </div>
+            </div>
           </div>
         </div>
 
