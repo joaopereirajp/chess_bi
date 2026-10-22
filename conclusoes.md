@@ -2,7 +2,7 @@
 ## Relatório Analítico: Desempenho e Estratégia em Jogos de Xadrez Online
 
 **Tema:** Desempenho e Estratégia em Jogos de Xadrez Online  
-**Base de Dados:** 20.058 partidas de xadrez reais extraídas do Lichess (`chess_games.csv`)  
+**Base de Dados:** 20.058 partidas de xadrez reais extraídas do [Chess Game Dataset (Lichess) no Kaggle](https://www.kaggle.com/datasets/datasnaek/chess) (`chess_games.csv`)  
 **Objetivo Geral:** Criação de um painel interativo (BI) para analisar o desempenho e o comportamento dos jogadores em Jogos de Xadrez Online levando em conta o nível de habilidade.  
 
 ---

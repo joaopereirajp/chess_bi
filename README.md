@@ -1,7 +1,7 @@
 # PROJETO INTEGRADOR: SEGUNDA ETAPA — DASHBOARD BI DE XADREZ
 
 > **Tema:** Desempenho e Estratégia em Jogos de Xadrez Online  
-> **Fonte dos Dados:** 20.058 partidas de xadrez reais do Lichess (Kaggle)  
+> **Fonte dos Dados:** 20.058 partidas reais extraídas do [Chess Game Dataset (Lichess) no Kaggle](https://www.kaggle.com/datasets/datasnaek/chess)  
 > **Tecnologias:** Next.js (App Router), Tailwind CSS, Chart.js, Lucide Icons, Python  
 
 ---
@@ -11,7 +11,7 @@
 | Item | Entrega Obrigatória | Arquivo / Link no Projeto |
 | :---: | :--- | :--- |
 | 1️⃣ | **Dashboard Funcional** | Aplicação web interativa em Next.js (`npm run dev` em `http://localhost:3000`) ou exportação estática na pasta `out/index.html` |
-| 2️⃣ | **Base de Dados Utilizada** | Base unificada e enriquecida com novas variáveis: [`chess_games.csv`](file:///Users/joaopereira/StudioProjects/chess_bi/chess_games.csv) |
+| 2️⃣ | **Base de Dados Utilizada** | Base unificada e enriquecida com novas variáveis: [`chess_games.csv`](file:///Users/joaopereira/StudioProjects/chess_bi/chess_games.csv)<br>Fonte original: [Chess Game Dataset no Kaggle](https://www.kaggle.com/datasets/datasnaek/chess) |
 | 3️⃣ | **Protótipo do Dashboard** | Arquivo de imagem em alta fidelidade: [`prototipo_dashboard.jpg`](file:///Users/joaopereira/StudioProjects/chess_bi/prototipo_dashboard.jpg) |
 | 4️⃣ | **Documento com 3 Conclusões** | Relatório analítico completo: [`conclusoes.md`](file:///Users/joaopereira/StudioProjects/chess_bi/conclusoes.md) (também disponível na aba do próprio Dashboard) |
 

@@ -70,10 +70,17 @@ export default function Home() {
         <div className="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2">
           <div>
             <div className="flex items-center space-x-2">
-              <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <a
+                href="https://www.kaggle.com/datasets/datasnaek/chess"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 transition cursor-pointer"
+                title="Abrir base original no Kaggle (Chess Game Dataset)"
+              >
                 <Sparkles className="w-3 h-3" />
-                <span>Base 100% Real • Lichess</span>
-              </span>
+                <span>Base 100% Real • Lichess no Kaggle</span>
+                <ExternalLink className="w-2.5 h-2.5 ml-0.5 opacity-70" />
+              </a>
               <span className="text-xs text-gray-500">20.058 Jogos Analisados</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1.5">
@@ -158,7 +165,15 @@ export default function Home() {
           <div className="flex items-center space-x-4 text-gray-400">
             <span>20.058 Partidas Analisadas</span>
             <span>•</span>
-            <span>Lichess Kaggle Dataset</span>
+            <a
+              href="https://www.kaggle.com/datasets/datasnaek/chess"
+              target="_blank"
+              rel="noreferrer"
+              className="text-gray-300 hover:text-amber-400 transition cursor-pointer underline underline-offset-4 flex items-center space-x-1"
+            >
+              <span>Lichess Dataset (Kaggle)</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
         </div>
       </footer>

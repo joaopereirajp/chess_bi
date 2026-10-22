@@ -44,7 +44,7 @@ Criação de um painel interativo para analisar o desempenho e o comportamento d
 
 **As fases do projeto serão:**
 
-1. **Coleta de Dados:** Obter o *dataset* de jogos disponíveis de uma fonte de acesso aberto (por exemplo, do Lichess no Kaggle).
+1. **Coleta de Dados:** Obter o *dataset* de jogos disponíveis de uma fonte de acesso aberto: [Chess Game Dataset (Lichess) no Kaggle](https://www.kaggle.com/datasets/datasnaek/chess).
 2. **Processamento de Dados:** Limpar os dados e extrair as variáveis necessárias (Abertura, Duração, Status, Rating).
 3. **Criação do Painel:** Visualizar os dados usando ferramentas de análise de dados.
 4. **Verificação dos Resultados:** Validar se os objetivos específicos foram alcançados através da análise do painel.
