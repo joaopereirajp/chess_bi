@@ -108,6 +108,16 @@ Incorpora nativamente o relatório acadêmico no próprio dashboard, com cards e
 
 ---
 
+### 👥 3. Equipe & Créditos (Aba "Créditos • Grupo 32")
+Identificação visual dos integrantes da equipe, tema do projeto e síntese das 4 entregas realizadas:
+
+<div align="center">
+  <img src="docs/images/credits_tab.png" alt="Página de Créditos - Grupo 32" width="100%" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+  <p><em>Figura 4: Aba de Créditos com identificação institucional do Grupo 32 e seus integrantes.</em></p>
+</div>
+
+---
+
 ## ⚙️ Arquitetura do Projeto & Pipeline de ETL
 
 O projeto foi construído sobre uma arquitetura moderna e autossuficiente:
@@ -127,7 +137,8 @@ chess_bi/
 │   │   ├── DurationChart.jsx     # Gráfico 2: Turnos/Minutos por nível de habilidade
 │   │   ├── OutcomesChart.jsx     # Gráfico 3: Desfecho por nível (Mate vs Resign)
 │   │   ├── OpeningsTable.jsx     # Tabela paginada com busca e exportação CSV
-│   │   └── ConclusionsTab.jsx    # Relatório executivo interativo
+│   │   ├── ConclusionsTab.jsx    # Relatório executivo interativo
+│   │   └── CreditsTab.jsx        # Página oficial de créditos e integrantes (Grupo 32)
 │   └── data/
 │       └── dashboard_data.json   # Base analítica pré-calculada para renderização ultrarrápida
 ├── docs/
@@ -148,6 +159,18 @@ chess_bi/
    - *Mestre / Especialista:* `2100+` (717 partidas • 3.6%)
 3. `time_category`: Agrupamento dos controles de tempo em *Bullet*, *Blitz*, *Rapid* e *Clássico*.
 4. `opening_family`: Agrupamento canônico da família da abertura (ex: *Sicilian*, *French*, *Queen's Gambit*).
+
+---
+
+## 👥 Equipe do Projeto • Grupo 32
+
+| Integrante | Papel / Responsabilidade no Projeto |
+| :--- | :--- |
+| **Ana Carolina V. Fernandes** | Pesquisa Acadêmica & Análise Exploratória de Dados |
+| **Carlos Armando Munhoz Vilela** | Engenharia de Dados & Pipeline ETL (`process_data.py`) |
+| **Edlaine Paula Silveira** | Business Intelligence & Modelagem de Indicadores |
+| **Fabio Perrone Jorge Miranda** | Visualização de Dados & Desenvolvimento Web |
+| **João Carlos Pereira** | Estratégia, Validação dos Objetivos & Conclusões |
 
 ---
 
@@ -206,5 +229,5 @@ python3 process_data.py
 ---
 
 <div align="center">
-  <sub>Desenvolvido para o <strong>Projeto Integrador (Segunda Etapa)</strong> • 2026</sub>
+  <sub>Desenvolvido pelo <strong>Grupo 32</strong> para o <strong>Projeto Integrador (Segunda Etapa)</strong> • 2026</sub>
 </div>

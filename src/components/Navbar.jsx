@@ -9,6 +9,7 @@ import {
   Download,
   Menu,
   X,
+  Users,
 } from 'lucide-react';
 
 export default function Navbar({ onSelectTab, activeTab }) {
@@ -54,6 +55,12 @@ export default function Navbar({ onSelectTab, activeTab }) {
       label: 'Insights & Conclusões',
       icon: BookOpen,
       badge: 'Oficial',
+    },
+    {
+      id: 'creditos',
+      label: 'Créditos',
+      icon: Users,
+      badge: 'Grupo 32',
     },
   ];
 

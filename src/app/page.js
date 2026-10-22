@@ -10,6 +10,7 @@ import DurationChart from '@/components/DurationChart';
 import OutcomesChart from '@/components/OutcomesChart';
 import OpeningsTable from '@/components/OpeningsTable';
 import ConclusionsTab from '@/components/ConclusionsTab';
+import CreditsTab from '@/components/CreditsTab';
 import { Download, FileText, Image as ImageIcon, ExternalLink, Sparkles } from 'lucide-react';
 
 export default function Home() {
@@ -21,7 +22,7 @@ export default function Home() {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const tabParam = params.get('tab');
-      if (tabParam && ['geral', 'aberturas', 'conclusoes'].includes(tabParam)) {
+      if (tabParam && ['geral', 'aberturas', 'conclusoes', 'creditos'].includes(tabParam)) {
         setActiveTab(tabParam);
       }
     }
@@ -87,28 +88,30 @@ export default function Home() {
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Intro banner */}
-        <div className="mb-6 pb-2">
-          <div className="flex items-center space-x-2">
-            <a
-              href="https://www.kaggle.com/datasets/datasnaek/chess"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 transition cursor-pointer"
-              title="Abrir base original no Kaggle (Chess Game Dataset)"
-            >
-              <Sparkles className="w-3 h-3" />
-              <span>Base 100% Real • Lichess no Kaggle</span>
-              <ExternalLink className="w-2.5 h-2.5 ml-0.5 opacity-70" />
-            </a>
-            <span className="text-xs text-gray-500">20.058 Jogos Analisados</span>
+        {activeTab !== 'creditos' && (
+          <div className="mb-6 pb-2">
+            <div className="flex items-center space-x-2">
+              <a
+                href="https://www.kaggle.com/datasets/datasnaek/chess"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 transition cursor-pointer"
+                title="Abrir base original no Kaggle (Chess Game Dataset)"
+              >
+                <Sparkles className="w-3 h-3" />
+                <span>Base 100% Real • Lichess no Kaggle</span>
+                <ExternalLink className="w-2.5 h-2.5 ml-0.5 opacity-70" />
+              </a>
+              <span className="text-xs text-gray-500">20.058 Jogos Analisados</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-2">
+              Painel Estratégico de Business Intelligence
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-400 mt-1 max-w-3xl leading-relaxed">
+              Análise interativa dos fatores determinantes para a vitória no xadrez: eficácia das aberturas, tempo de jogo e impacto da proficiência dos enxadristas.
+            </p>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-2">
-            Painel Estratégico de Business Intelligence
-          </h2>
-          <p className="text-xs sm:text-sm text-gray-400 mt-1 max-w-3xl leading-relaxed">
-            Análise interativa dos fatores determinantes para a vitória no xadrez: eficácia das aberturas, tempo de jogo e impacto da proficiência dos enxadristas.
-          </p>
-        </div>
+        )}
 
         {/* Tab 1: Visão Geral do Dashboard */}
         {activeTab === 'geral' && (
@@ -155,6 +158,9 @@ export default function Home() {
 
         {/* Tab 3: Conclusões Formais */}
         {activeTab === 'conclusoes' && <ConclusionsTab />}
+
+        {/* Tab 4: Créditos & Equipe (Grupo 32) */}
+        {activeTab === 'creditos' && <CreditsTab />}
       </main>
 
       {/* Footer */}
